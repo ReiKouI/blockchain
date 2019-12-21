@@ -1,104 +1,64 @@
 package cn.edu.ecnu.blockchain.agent;
 
-import java.io.Serializable;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import cn.edu.ecnu.blockchain.util.HashUtil;
+import cn.edu.ecnu.blockchain.util.RSAUtil;
+import lombok.Data;
+import lombok.extern.log4j.Log4j2;
 
+import java.io.Serializable;
+import java.util.Random;
+
+@Data
+@Log4j2
 public class Block implements Serializable {
+    public static final int DIFFICULTY = 1;
     private static final long serialVersionUID = 1L;
 
     private int index;
-    private Long timestamp;
+    private long nonce;
+    private long timestamp;
     private String hash;
     private String previousHash;
     private String creator;
+    private String creatorPublicKey;
+    private Transaction transaction;
 
     // for jackson
     public Block() {
     }
 
-    @Override
-    public String toString() {
-        return "Block{" +
-                "index=" + index +
-                ", timestamp=" + timestamp +
-                ", creator=" + creator +
-//                ", hash='" + hash + '\'' +
-//                ", previousHash='" + previousHash + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        final Block block = (Block) o;
-        return index == block.index
-                && timestamp.equals(block.timestamp)
-                && hash.equals(block.hash)
-                && previousHash.equals(block.previousHash)
-                && creator.equals(block.creator);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = index;
-        result = 31 * result + timestamp.hashCode();
-        result = 31 * result + hash.hashCode();
-        result = 31 * result + previousHash.hashCode();
-        result = 31 * result + creator.hashCode();
-        return result;
-    }
-
-    public Block(int index, String preHash, String creator) {
+    public Block(int index, String preHash, String creator, String creatorPublicKey, Transaction transaction) {
         this.index = index;
+        this.timestamp = System.currentTimeMillis();
         this.previousHash = preHash;
         this.creator = creator;
-        timestamp = System.currentTimeMillis();
-        hash = calculateHash(String.valueOf(index) + previousHash + String.valueOf(timestamp));
+        this.creatorPublicKey = creatorPublicKey;
+        this.transaction = transaction;
     }
 
-    public String getCreator() {
-        return creator;
+    public void sign(String privateKey) {
+        do {
+            nonce = new Random().nextLong();
+            String rawString = getRawString();
+            hash = RSAUtil.signData(rawString, RSAUtil.parsePrivateKey(privateKey));
+        } while (!HashUtil.matchDifficulty(hash, Block.DIFFICULTY));
     }
 
-    public int getIndex() {
-        return index;
+    private String getRawString() {
+        String trxStr = transaction == null ? null : transaction.toString();
+        StringBuilder rawString = new StringBuilder();
+        rawString.append(index)
+                .append(nonce)
+                .append(timestamp)
+                .append(previousHash)
+                .append(creator)
+                .append(creatorPublicKey)
+                .append(trxStr);
+        return rawString.toString();
     }
 
-    public long getTimestamp() {
-        return timestamp;
-    }
-
-    public String getHash() {
-        return hash;
-    }
-
-    public String getPreviousHash() {
-        return previousHash;
-    }
-
-    private String calculateHash(String text) {
-        MessageDigest digest;
-        try {
-            digest = MessageDigest.getInstance("SHA-256");
-        } catch (NoSuchAlgorithmException e) {
-            return "HASH_ERROR";
-        }
-
-        final byte bytes[] = digest.digest(text.getBytes());
-        final StringBuilder hexString = new StringBuilder();
-        for (final byte b : bytes) {
-            String hex = Integer.toHexString(0xff & b);
-            if (hex.length() == 1) {
-                hexString.append('0');
-            }
-            hexString.append(hex);
-        }
-        return hexString.toString();
+    public boolean isSignVerified() {
+        String rawString = getRawString();
+        return RSAUtil.verifyData(rawString, hash, RSAUtil.parsePublicKey(creatorPublicKey));
     }
 }

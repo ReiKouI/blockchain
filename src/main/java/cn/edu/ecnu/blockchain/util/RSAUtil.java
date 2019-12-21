@@ -3,6 +3,9 @@ package cn.edu.ecnu.blockchain.util;
 import lombok.extern.log4j.Log4j2;
 
 import java.security.*;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -47,6 +50,34 @@ public class RSAUtil {
         } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException e) {
             log.error(e);
             throw new RuntimeException("Could not sign data.", e);
+        }
+    }
+
+    public static String encodeKey(Key key) {
+        return Base64.getEncoder().encodeToString(key.getEncoded());
+    }
+
+    public static PublicKey parsePublicKey(String b64PublicKey) {
+        byte[] bytes = Base64.getDecoder().decode(b64PublicKey);
+        X509EncodedKeySpec spec = new X509EncodedKeySpec(bytes);
+        try {
+            KeyFactory kf = KeyFactory.getInstance("RSA");
+            return kf.generatePublic(spec);
+        } catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
+            log.error(e);
+            throw new RuntimeException("Could not parse key. The key should be base64-encoded.");
+        }
+    }
+
+    public static PrivateKey parsePrivateKey(String b64PrivateKey) {
+        byte[] bytes = Base64.getDecoder().decode(b64PrivateKey);
+        PKCS8EncodedKeySpec specPvt = new PKCS8EncodedKeySpec(bytes);
+        try {
+            KeyFactory kf = KeyFactory.getInstance("RSA");
+            return kf.generatePrivate(specPvt);
+        } catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
+            log.error(e);
+            throw new RuntimeException("Could not parse key. The key should be base64-encoded.");
         }
     }
 }

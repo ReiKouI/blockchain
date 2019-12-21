@@ -35,7 +35,7 @@ public class AgentServerThread extends Thread {
                             System.err.println("Invalid block received: " + msg.blocks);
                         }
                         synchronized (agent) {
-                            agent.addBlock(msg.blocks.get(0));
+                            agent.addBlockFromOtherAgent(msg.blocks.get(0));
                         }
                         break;
                     } else if (REQ_ALL_BLOCKS == msg.type) {

@@ -11,6 +11,7 @@ class RSAUtilTest {
     void signDataTest() {
         KeyPair keyPair1 = RSAUtil.createKeyPair();
         KeyPair keyPair2 = RSAUtil.createKeyPair();
+        System.out.println(keyPair1.getPublic());
         String testData = "test Data sign by 1";
         String signature = RSAUtil.signData(testData, keyPair1.getPrivate());
         Assertions.assertTrue(RSAUtil.verifyData(testData,signature,keyPair1.getPublic()));
