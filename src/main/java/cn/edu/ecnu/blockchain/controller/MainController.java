@@ -19,7 +19,7 @@ public class MainController {
 
     @RequestMapping(method = GET)
     public Agent getAgent(@RequestParam("name") String name) {
-        return agentManager.getAgent(name);
+        return agentManager.getAgentByName(name);
     }
 
     @RequestMapping(method = DELETE)
