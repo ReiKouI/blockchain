@@ -46,4 +46,25 @@ public class MainController {
     public Block createBlock(@RequestParam(value = "agent") final String name) {
         return agentManager.createBlock(name);
     }
+
+    @RequestMapping(method = POST, path = "transaction")
+    public Block createBlock(@RequestParam(value = "agent") final String miner,
+                             @RequestParam(value = "sender") final String sender,
+                             @RequestParam(value = "receiver") final String receiver,
+                             @RequestParam(value = "value") final Double value
+
+
+    ) {
+        return agentManager.createTransaction(miner, sender, receiver, value);
+    }
+
+    @RequestMapping(method = POST, path = "blockchain")
+    public List<Block> getBlockChain(@RequestParam(value = "name") final String name
+
+
+    ) {
+        return agentManager.getAgentByName(name).getBlockchain();
+    }
+
+
 }
