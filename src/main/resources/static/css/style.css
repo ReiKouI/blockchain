@@ -1910,3 +1910,11 @@ a:focus, a:hover {
   color: #f31e7a; }
 
 /*# sourceMappingURL=maps/style.css.map */
+.signature{
+  width: 40px;
+  text-overflow:ellipsis;
+  overflow:hidden;
+}
+#transactionTable{
+  table-layout: fixed;
+}
