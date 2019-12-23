@@ -97,8 +97,36 @@ var myChart = echarts.init(document.getElementById('main'));
 //         }
 //     ]
 // };
+var datas = [];
+var nodes = [];
+var edges = []
+function displayAllAgents(json) {
+    var agents;
+    try {
+        agents = JSON.parse(json);
+    } catch (e) {
+        displayMsg("Invalid response from server " + json, "red");
+        return;
+    }
+    var agentsData = agents.data;
+    console.log(agentsData)
 
+    for (var i in agentsData) {
+        nodes.push({
+            id:agentsData[i].name,
+            name:agentsData[i].name,
+            symbolSize:i+20
+        })
+        for (var trans in agentsData.transactions){
+            edges.push(trans.senderName, trans.receiverName);
+        }
+    }
+    datas.push({
+        nodes: nodes,
+        edges: edges
+    });
 
+}
 
 function createNodes(count) {
     var nodes = [];
@@ -123,7 +151,7 @@ function createEdges(count) {
     return edges;
 }
 
-var datas = [];
+
 // for (var i = 0; i < 16; i++) {
 //     datas.push({
 //         nodes: createNodes(i + 2),
@@ -132,14 +160,15 @@ var datas = [];
 // }
 
 
-datas.push({
-    nodes: createNodes(12),
-    edges: createEdges(12)
-});
+// datas.push({
+//     nodes: createNodes(12),
+//     edges: createEdges(12)
+// });
 
 
 
 var option = {
+
     series: datas.map(function (item, idx) {
         return {
             type: 'graph',

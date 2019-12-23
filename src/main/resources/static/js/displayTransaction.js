@@ -1,10 +1,19 @@
 "use strict";
-const TRANS_TABLE_NAME = "transactionTable"
 function displayTrans(jsonTrans) {
-    console.log(jsonTrans)
-    if (jsonTrans.code == 0 ){
-        for(var i= 0;i<jsonTrans.data.length;i++){
-            var itemTrans = jsonTrans.data[i]
+    if (typeof jsonTrans === "string") {
+        var trans;
+        try {
+            trans = JSON.parse(jsonTrans);
+        } catch (e) {
+            document.getElementById("msg").innerHTML = "Invalid response from server " + jsonBlock;
+            return;
+        }
+    } else {
+        trans = jsonTrans;
+    }
+    if (trans.code == 0 ){
+        for(var i= 0;i<trans.data.length;i++){
+            var itemTrans = trans.data[i]
             var isPaid = "                            <td><span class=\"label gradient-4 rounded\">未记账</span>\n"
             if(!itemTrans.valid){
                 isPaid = "                            <td><span class=\"label gradient-2 rounded\">已记帐</span>\n"
@@ -20,7 +29,6 @@ function displayTrans(jsonTrans) {
             "                            <td></td>\n" +
             "                        </tr>"
             $("#transBody").append(tr);
-            console.log(i)
         }
 
     }

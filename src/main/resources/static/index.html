@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body id="body">
+<body id="body" onload="getAllAgent()">
     <!--
     Start Preloader
     ==================================== -->
@@ -78,7 +78,7 @@
                         <p>比特币（Bitcoin）的概念最初由中本聪在2008年11月1日提出，并于2009年1月3日正式诞生。比特币不依靠特定货币机构发行，它依据特定算法，通过大量的计算产生，比特币经济使用整个P2P网络中众多节点构成的分布式数据库来确认并记录所有的交易行为，并使用密码学的设计来确保货币流通各个环节安全性。</p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <a data-scroll href="#services" class="btn btn-main" onclick="addAgent()">了解更多</a>
+                                <a data-scroll href="#services" class="btn btn-main">了解更多</a>
                             </li>
                         </ul>
                     </div>
@@ -297,7 +297,7 @@
     <script src="js/script.js"></script>
     <!--力具图-->
     <script src="js/myChart.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/restClientIndex.js"></script>
     <script>
      $(function(){
          /*公共部分
