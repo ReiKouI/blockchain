@@ -82,7 +82,7 @@ public class MainController {
     public Result getBalance(@RequestParam(value = "name") final String name
     ) {
         final Agent agent = agentManager.getAgentByName(name);
-        return ResultUtil.success(AccountUtil.getAvailableAccount(agent.getBlockchain(), agent.getName()));
+        return ResultUtil.success(agent.getAvailableAccount());
     }
 
 

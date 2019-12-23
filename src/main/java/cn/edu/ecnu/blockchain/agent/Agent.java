@@ -75,6 +75,10 @@ public class Agent {
         return createBlock(null);
     }
 
+    public double getAvailableAccount() {
+        return AccountUtil.getAvailableAccount(blockchain, publicKey);
+    }
+
     Transaction createTransactionTo(Agent receiver, double value) {
         if (value > AccountUtil.getAvailableAccount(blockchain, publicKey)) {
             throw new GlobalException(CodeMessage.INSUFFICIENT_BALANCE);
