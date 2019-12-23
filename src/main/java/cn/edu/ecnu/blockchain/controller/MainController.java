@@ -4,7 +4,9 @@ import cn.edu.ecnu.blockchain.agent.Agent;
 import cn.edu.ecnu.blockchain.agent.AgentManager;
 import cn.edu.ecnu.blockchain.agent.Block;
 import cn.edu.ecnu.blockchain.agent.Transaction;
+import cn.edu.ecnu.blockchain.result.Result;
 import cn.edu.ecnu.blockchain.util.AccountUtil;
+import cn.edu.ecnu.blockchain.util.ResultUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,8 +22,8 @@ public class MainController {
     private static AgentManager agentManager = new AgentManager();
 
     @RequestMapping(method = GET)
-    public Agent getAgent(@RequestParam("name") String name) {
-        return agentManager.getAgentByName(name);
+    public Result getAgent(@RequestParam("name") String name) {
+        return ResultUtil.success(agentManager.getAgentByName(name));
     }
 
     @RequestMapping(method = DELETE)
@@ -30,13 +32,13 @@ public class MainController {
     }
 
     @RequestMapping(method = POST, params = {"name", "port"})
-    public Agent addAgent(@RequestParam("name") String name, @RequestParam("port") int port) {
-        return agentManager.addAgent(name, port);
+    public Result addAgent(@RequestParam("name") String name, @RequestParam("port") int port) {
+        return ResultUtil.success(agentManager.addAgent(name, port));
     }
 
     @RequestMapping(path = "all", method = GET)
-    public List<Agent> getAllAgents() {
-        return agentManager.getAllAgents();
+    public Result getAllAgents() {
+        return ResultUtil.success(agentManager.getAllAgents());
     }
 
     @RequestMapping(path = "all", method = DELETE)
@@ -45,42 +47,42 @@ public class MainController {
     }
 
     @RequestMapping(method = POST, path = "blank")
-    public Block createBlock(@RequestParam(value = "agent") final String name) {
-        return agentManager.createBlock(name);
+    public Result createBlock(@RequestParam(value = "name") final String name) {
+        return ResultUtil.success(agentManager.createBlock(name));
     }
 
     @RequestMapping(method = POST, path = "transactions")
-    public List<Transaction> getTransactions(@RequestParam(value = "name") final String name
+    public Result getTransactions(@RequestParam(value = "name") final String name
     ) {
-        return agentManager.getAgentByName(name).getTransactions();
+        return ResultUtil.success(agentManager.getAgentByName(name).getTransactions());
     }
 
     @RequestMapping(method = POST, path = "transaction")
-    public Transaction doTransaction(
+    public Result doTransaction(
                              @RequestParam(value = "sender") final String sender,
                              @RequestParam(value = "receiver") final String receiver,
                              @RequestParam(value = "value") final Double value
     ) {
-        return agentManager.createTransaction(sender, receiver, value);
+        return ResultUtil.success(agentManager.createTransaction(sender, receiver, value));
     }
 
     @RequestMapping(method = POST, path = "mine")
-    public Block mine(@RequestParam(value = "miner") final String miner,@RequestParam(value = "signature") final String signature) {
-        return agentManager.createBlock(miner, signature);
+    public Result mine(@RequestParam(value = "miner") final String miner,@RequestParam(value = "signature") final String signature) {
+        return ResultUtil.success(agentManager.createBlock(miner, signature));
     }
 
 
     @RequestMapping(method = POST, path = "blockchain")
-    public List<Block> getBlockChain(@RequestParam(value = "name") final String name
+    public Result getBlockChain(@RequestParam(value = "name") final String name
     ) {
-        return agentManager.getAgentByName(name).getBlockchain();
+        return ResultUtil.success(agentManager.getAgentByName(name).getBlockchain());
     }
 
     @RequestMapping(method = POST, path = "balance")
-    public double getBalance(@RequestParam(value = "name") final String name
+    public Result getBalance(@RequestParam(value = "name") final String name
     ) {
         final Agent agent = agentManager.getAgentByName(name);
-        return AccountUtil.getAvailableAccount(agent.getBlockchain(), agent.getName());
+        return ResultUtil.success(AccountUtil.getAvailableAccount(agent.getBlockchain(), agent.getName()));
     }
 
 

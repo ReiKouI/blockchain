@@ -1,5 +1,7 @@
 package cn.edu.ecnu.blockchain.agent;
 
+import cn.edu.ecnu.blockchain.exception.GlobalException;
+import cn.edu.ecnu.blockchain.result.CodeMessage;
 import cn.edu.ecnu.blockchain.util.AccountUtil;
 import cn.edu.ecnu.blockchain.util.RSAUtil;
 import lombok.Getter;
@@ -75,7 +77,7 @@ public class Agent {
 
     Transaction createTransactionTo(Agent receiver, double value) {
         if (value > AccountUtil.getAvailableAccount(blockchain, publicKey)) {
-            throw new RuntimeException("No enough account.");
+            throw new GlobalException(CodeMessage.INSUFFICIENT_BALANCE);
         }
         Transaction transaction = new Transaction(publicKey, name, receiver.publicKey, receiver.name, value);
         transaction.sign(privateKey);
