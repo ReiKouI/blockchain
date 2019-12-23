@@ -38,6 +38,9 @@ public class Agent {
     private List<Block> blockchain;
 
     @Getter
+    private List<Transaction> transactions;
+
+    @Getter
     private String publicKey;
 
     private String privateKey;
@@ -59,6 +62,8 @@ public class Agent {
         this.blockchain = new ArrayList<>();
         blockchain.add(root);
 
+        transactions = new ArrayList<>();
+
         KeyPair keyPair = RSAUtil.createKeyPair();
         publicKey = RSAUtil.encodeKey(keyPair.getPublic());
         privateKey = RSAUtil.encodeKey(keyPair.getPrivate());
@@ -68,13 +73,18 @@ public class Agent {
         return createBlock(null);
     }
 
-    Transaction createTransactionTo(String receiver, double value) {
+    Transaction createTransactionTo(Agent receiver, double value) {
         if (value > AccountUtil.getAvailableAccount(blockchain, publicKey)) {
             throw new RuntimeException("No enough account.");
         }
-        Transaction transaction = new Transaction(publicKey, receiver, value);
+        Transaction transaction = new Transaction(publicKey, name, receiver.publicKey, receiver.name, value);
         transaction.sign(privateKey);
+        broadcastTransaction(transaction);
         return transaction;
+    }
+
+    private void broadcastTransaction(Transaction transaction) {
+        peers.forEach(peer -> sendMessage(INFO_NEW_TRANSACTION, peer.getAddress(), peer.getPort(), transaction));
     }
 
     Block createBlock(Transaction transaction) {
@@ -106,6 +116,10 @@ public class Agent {
         if (isBlockValid(block)) {
             blockchain.add(block);
         }
+    }
+
+    void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
     }
 
     void startHost() {
@@ -170,7 +184,45 @@ public class Agent {
         peers.forEach(peer -> sendMessage(type, peer.getAddress(), peer.getPort(), block));
     }
 
-    private void sendMessage(Message.MESSAGE_TYPE type, String host, int port, Block... blocks) {
+//    private void sendMessage(Message.MESSAGE_TYPE type, String host, int port, Block... blocks) {
+//        try (
+//                final Socket peer = new Socket(host, port);
+//                final ObjectOutputStream out = new ObjectOutputStream(peer.getOutputStream());
+//                final ObjectInputStream in = new ObjectInputStream(peer.getInputStream())) {
+//            Object fromPeer;
+//            while ((fromPeer = in.readObject()) != null) {
+//                if (fromPeer instanceof Message) {
+//                    final Message msg = (Message) fromPeer;
+//                    System.out.println(String.format("%d received: %s", this.port, msg.toString()));
+//                    if (READY == msg.type) {
+//                        out.writeObject(new Message.MessageBuilder()
+//                                .withType(type)
+//                                .withReceiver(port)
+//                                .withSender(this.port)
+//                                .withBlocks(Arrays.asList(blocks)).build());
+//                    } else if (RSP_ALL_BLOCKS == msg.type) {
+//                        if (!msg.blocks.isEmpty() && this.blockchain.size() == 1 && isChainValid(msg.blocks)) {
+//                            blockchain = new ArrayList<>(msg.blocks);
+//                        }
+//                        break;
+//                    }
+//                }
+//            }
+//        } catch (UnknownHostException e) {
+//            log.error(String.format("Unknown host %s %d", host, port));
+//        } catch (IOException e) {
+//            log.error((String.format("%s couldn't get I/O for the connection to %s. Retrying...%n", getPort(), port)));
+//            try {
+//                Thread.sleep(100);
+//            } catch (InterruptedException ie) {
+//                log.error(ie);
+//            }
+//        } catch (ClassNotFoundException e) {
+//            log.error(e);
+//        }
+//    }
+
+        private void sendMessage(Message.MESSAGE_TYPE type, String host, int port, Object object) {
         try (
                 final Socket peer = new Socket(host, port);
                 final ObjectOutputStream out = new ObjectOutputStream(peer.getOutputStream());
@@ -181,11 +233,27 @@ public class Agent {
                     final Message msg = (Message) fromPeer;
                     System.out.println(String.format("%d received: %s", this.port, msg.toString()));
                     if (READY == msg.type) {
-                        out.writeObject(new Message.MessageBuilder()
-                                .withType(type)
-                                .withReceiver(port)
-                                .withSender(this.port)
-                                .withBlocks(Arrays.asList(blocks)).build());
+                        if (object != null) {
+                            if (object instanceof Block) {
+                                out.writeObject(new Message.MessageBuilder()
+                                        .withType(type)
+                                        .withReceiver(port)
+                                        .withSender(this.port)
+                                        .withBlocks(Arrays.asList((Block) object)).build());
+                            } else {
+                                out.writeObject(new Message.MessageBuilder()
+                                        .withType(type)
+                                        .withReceiver(port)
+                                        .withSender(this.port)
+                                        .withTransactions(Arrays.asList((Transaction) object)).build());
+                            }
+                        } else {
+                            out.writeObject(new Message.MessageBuilder()
+                                    .withType(type)
+                                    .withReceiver(port)
+                                    .withSender(this.port)
+                                    .withBlocks(Arrays.asList((Block) object)).build());
+                        }
                     } else if (RSP_ALL_BLOCKS == msg.type) {
                         if (!msg.blocks.isEmpty() && this.blockchain.size() == 1 && isChainValid(msg.blocks)) {
                             blockchain = new ArrayList<>(msg.blocks);
@@ -207,6 +275,7 @@ public class Agent {
             log.error(e);
         }
     }
+
 
     private boolean isChainValid(List<Block> blocks) {
         String previousHash = "ROOT_HASH";

@@ -45,6 +45,14 @@ public class AgentServerThread extends Thread {
                                 .withBlocks(agent.getBlockchain())
                                 .build());
                         break;
+                    } else if (INFO_NEW_TRANSACTION == msg.type) {
+                        if (msg.transactions.isEmpty() || msg.transactions.size() > 1) {
+                            System.err.println("Invalid block received: " + msg.transactions);
+                        }
+                        synchronized (agent) {
+                            agent.addTransaction(msg.transactions.get(0));
+                        }
+                        break;
                     }
                 }
             }
