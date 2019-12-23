@@ -1,17 +1,11 @@
-"use strict";
-
-var testMode = false;
-function getBlockChain() {
+function addAgent() {
     var formData = new FormData();
     formData.append("name", "A3");
-    sendHttpRequest("POST", "agent/transactions", formData, null);
-    // if (testMode){
-    //     displayAllAgents('')
-    // }
+    formData.append("port", "3001");
+    console.log("addAgent")
+    sendHttpRequest("POST", "agent", formData, null);
+
 }
-
-
-
 function sendHttpRequest(action, url, data, callback) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function () {
