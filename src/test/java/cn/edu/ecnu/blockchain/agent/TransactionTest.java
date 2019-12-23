@@ -14,7 +14,9 @@ class TransactionTest {
         KeyPair receiver = RSAUtil.createKeyPair();
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             Transaction Transaction = new Transaction(
-                    RSAUtil.encodeKey(sender.getPublic()), RSAUtil.encodeKey(receiver.getPublic()), -1);
+                    RSAUtil.encodeKey(sender.getPublic()), "sender",
+                    RSAUtil.encodeKey(receiver.getPublic()), "receiver",
+                    -1);
         });
     }
 
@@ -23,7 +25,9 @@ class TransactionTest {
         KeyPair sender = RSAUtil.createKeyPair();
         KeyPair receiver = RSAUtil.createKeyPair();
         Transaction Transaction = new Transaction(
-                RSAUtil.encodeKey(sender.getPublic()), RSAUtil.encodeKey(receiver.getPublic()), 8);
+                RSAUtil.encodeKey(sender.getPublic()), "sender",
+                RSAUtil.encodeKey(receiver.getPublic()), "receiver",
+                8);
         Transaction.sign(RSAUtil.encodeKey(sender.getPrivate()));
         Assertions.assertTrue(Transaction.isSignVerified());
         Transaction.sign(RSAUtil.encodeKey(receiver.getPrivate()));

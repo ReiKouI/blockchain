@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.Serializable;
-import java.security.PrivateKey;
 import java.util.Date;
 
 @Data
@@ -13,17 +12,21 @@ import java.util.Date;
 public class Transaction implements Serializable {
     private long timeStamp;
     private String sender;
+    private String senderName;
     private String receiver;
+    private String receiverName;
     private double value;
     private String signature;
 
-    public Transaction(String sender, String receiver, double value) {
+    public Transaction(String sender, String senderName, String receiver, String receiverName, double value) {
         if (value < 0) {
             throw new IllegalArgumentException("value must not less than 0.");
         }
         this.timeStamp = new Date().getTime();
         this.sender = sender;
+        this.senderName = senderName;
         this.receiver = receiver;
+        this.receiverName = receiverName;
         this.value = value;
     }
 
