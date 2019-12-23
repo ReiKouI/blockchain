@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="Bingo One page parallax responsive HTML Template ">
+
+  <meta name="author" content="Themefisher.com">
+
+  <title>Bit-Bank</title>
+
+<!-- Mobile Specific Meta
+  ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
+
+  <!-- CSS
+  ================================================== -->
+  <!-- Themefisher Icon font -->
+  <link rel="stylesheet" href="plugins/themefisher-font.v-2/style.css">
+  <!-- bootstrap.min css -->
+  <link rel="stylesheet" href="plugins/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
+  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+
+
+</head>
+
+<body id="body">
+
+    <!--
+    Start Preloader
+    ==================================== -->
+    <div id="preloader">
+    <div class="preloader">
+      <div class="sk-circle1 sk-child"></div>
+      <div class="sk-circle2 sk-child"></div>
+      <div class="sk-circle3 sk-child"></div>
+      <div class="sk-circle4 sk-child"></div>
+      <div class="sk-circle5 sk-child"></div>
+      <div class="sk-circle6 sk-child"></div>
+      <div class="sk-circle7 sk-child"></div>
+      <div class="sk-circle8 sk-child"></div>
+      <div class="sk-circle9 sk-child"></div>
+      <div class="sk-circle10 sk-child"></div>
+      <div class="sk-circle11 sk-child"></div>
+      <div class="sk-circle12 sk-child"></div>
+    </div>
+    </div>
+    <!--
+    End Preloader
+    ==================================== -->
+
+    <!--
+    Fixed Navigation
+    ==================================== -->
+    <div class="header"></div>
+
+    <!-- Start Pricing section
+            =========================================== -->
+    <section class="pricing-table  section" id="pricing">
+        <div class="container">
+            <div class="row">
+                <h4 class="card-title">交易行</h4>
+                <div class="table-responsive">
+                    <table class="table header-border">
+                        <thead>
+                        <tr>
+                            <th>交易号</th>
+                            <th>用户ID</th>
+                            <th>日期</th>
+                            <th>金额</th>
+                            <th>交易状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><a href="javascript:void(0)">Order #26589</a>
+                            </td>
+                            <td>Herman Beck</td>
+                            <td><span class="text-muted">Oct 16, 2017</span>
+                            </td>
+                            <td>$45.00</td>
+                            <td><span class="label gradient-1 rounded">Paid</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="javascript:void(0)">Order #58746</a>
+                            </td>
+                            <td>Mary Adams</td>
+                            <td><span class="text-muted">Oct 12, 2017</span>
+                            </td>
+                            <td>$245.30</td>
+                            <td><span class="label gradient-2 rounded">Shipped</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="javascript:void(0)">Order #98458</a>
+                            </td>
+                            <td>Caleb Richards</td>
+                            <td><span class="text-muted">May 18, 2017</span>
+                            </td>
+                            <td>$38.00</td>
+                            <td><span class="label gradient-4 rounded">Shipped</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="javascript:void(0)">Order #32658</a>
+                            </td>
+                            <td>June Lane</td>
+                            <td><span class="text-muted">Apr 28, 2017</span>
+                            </td>
+                            <td>$77.99</td>
+                            <td><span class="label gradient-2 rounded">Paid</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>   	<!-- End container -->
+    </section>   <!-- End section -->
+
+    <footer id="footer" class="bg-one">
+      <div class="footer"></div>
+    </footer> <!-- end footer -->
+    <!-- end Footer Area
+    ========================================== -->
+
+
+
+    <!--
+    Essential Scripts
+    =====================================-->
+
+    <!-- Main jQuery -->
+    <script src="plugins/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.7 -->
+    <!--<script src="plugins/bootstrap/dist/js/popper.min.js"></script>-->
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/esm/popper.min.js" type="module"></script>
+    <script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Owl Carousel -->
+    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+    <!-- Smooth Scroll js -->
+    <script src="plugins/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>-->
+    <!-- Custom js -->
+    <script src="js/script.js"></script>
+
+    <script>
+     $(function(){
+         /*公共部分
+          * 导航栏
+          * footer CopyRight
+          */
+         $(".header").load("header.html");
+         $(".footer").load("footer.html");
+     });
+    </script>
+
+  </body>
+</html>
