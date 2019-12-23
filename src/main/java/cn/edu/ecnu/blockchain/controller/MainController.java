@@ -28,6 +28,18 @@ public class MainController {
         agentManager.addAgent("A3", 3003);
         agentManager.addAgent("A4", 3004);
         agentManager.addAgent("A5", 3005);
+        agentManager.createBlock("A1");
+        agentManager.createBlock("A2");
+        agentManager.createBlock("A3");
+        agentManager.createBlock("A4");
+        agentManager.createBlock("A5");
+        final Transaction transaction1 = agentManager.createTransaction("A1", "A2", 4.2);
+        final Transaction transaction2 = agentManager.createTransaction("A3", "A2", 1.2);
+        agentManager.createTransaction("A3", "A4", 3.3);
+        agentManager.createTransaction("A5", "A4", 2.1);
+        agentManager.createTransaction("A5", "A1", 2.1);
+        agentManager.createBlock("A5", transaction1.getSignature());
+        agentManager.createBlock("A4", transaction2.getSignature());
     }
 
     @RequestMapping(method = GET)
