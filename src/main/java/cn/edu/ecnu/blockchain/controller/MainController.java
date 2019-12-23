@@ -10,6 +10,7 @@ import cn.edu.ecnu.blockchain.util.ResultUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import sun.applet.Main;
 
 import java.util.List;
 
@@ -20,6 +21,14 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 public class MainController {
 
     private static AgentManager agentManager = new AgentManager();
+
+    private MainController() {
+        agentManager.addAgent("A1", 3001);
+        agentManager.addAgent("A2", 3002);
+        agentManager.addAgent("A3", 3003);
+        agentManager.addAgent("A4", 3004);
+        agentManager.addAgent("A5", 3005);
+    }
 
     @RequestMapping(method = GET)
     public Result getAgent(@RequestParam("name") String name) {
