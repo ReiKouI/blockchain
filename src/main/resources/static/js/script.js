@@ -1,11 +1,11 @@
-                           
+
 
 (function ($) { "use strict";
-	
+
 	/* ========================================================================= */
 	/*	Page Preloader
 	/* ========================================================================= */
-	
+
 	// window.load = function () {
 	// 	document.getElementById('preloader').style.display = 'none';
 	// }
@@ -42,12 +42,12 @@
 
 
 
-	
-	
+
+
 	/* ========================================================================= */
 	/*	Testimonial Carousel
 	/* =========================================================================  */
- 
+
 	//Init the slider
 	$('.testimonial-slider').slick({
 		slidesToShow: 3,
@@ -79,7 +79,7 @@
 	/* ========================================================================= */
 	/*	Clients Slider Carousel
 	/* =========================================================================  */
- 
+
 	//Init the slider
 	$('.clients-logo-slider').slick({
 		infinite: true,
@@ -104,12 +104,12 @@
   		slidesToShow: 5,
   		slidesToScroll: 1,
 	});
-	
-	
+
+
 	/* ========================================================================= */
 	/*	Awars Counter Js
 	/* =========================================================================  */
-	
+
 
 
 
@@ -136,10 +136,10 @@
 		where VARIABLE is the variable we are checking (like name, email),
 		length is a JavaScript function to get the number of characters.
 		And as you can see if the num of characters is 0 we set the error
-		variable to true and show the name_error div with the fadeIn effect. 
+		variable to true and show the name_error div with the fadeIn effect.
 		if it's not 0 then we fadeOut the div( that's if the div is shown and
-		the error is fixed it fadesOut. 
-		
+		the error is fixed it fadesOut.
+
 		The only difference from these checks is the email checking, we have
 		email.indexOf('@') which checks if there is @ in the email input field.
 		This JavaScript function will return -1 if no occurrence have been found.*/
@@ -202,16 +202,16 @@
 /*	On scroll fade/bounce effect
 /* ========================================================================= */
 	var scroll = new SmoothScroll('a[href*="#"]');
-	
+
 
 
 
 
 /* ========================================================================= */
 	/*	Header Scroll Background Change
-	/* ========================================================================= */	
-	
-$(window).scroll(function() {    
+	/* ========================================================================= */
+
+$(window).scroll(function() {
 var scroll = $(window).scrollTop();
  //console.log(scroll);
 if (scroll > 200) {
@@ -229,77 +229,77 @@ if (scroll > 200) {
 
 window.marker = null;
 
-function initialize() {
-    var map;
+// function initialize() {
+//     var map;
+//
+//     var nottingham = new google.maps.LatLng(51.507351, -0.127758);
+//
+//     var style = [
+//     {
+//         "stylers": [
+//             {
+//                 "hue": "#ff61a6"
+//             },
+//             {
+//                 "visibility": "on"
+//             },
+//             {
+//                 "invert_lightness": true
+//             },
+//             {
+//                 "saturation": 40
+//             },
+//             {
+//                 "lightness": 10
+//             }
+//         ]
+//     }
+// ];
+//
+//     var mapOptions = {
+//         // SET THE CENTER
+//         center: nottingham,
+//
+//         // SET THE MAP STYLE & ZOOM LEVEL
+//         mapTypeId: google.maps.MapTypeId.ROADMAP,
+//         zoom:9,
+//
+//         // SET THE BACKGROUND COLOUR
+//         backgroundColor:"#000",
+//
+//         // REMOVE ALL THE CONTROLS EXCEPT ZOOM
+//         zoom:17,
+//         panControl:false,
+//         zoomControl:true,
+//         mapTypeControl:false,
+//         scaleControl:false,
+//         streetViewControl:false,
+//         overviewMapControl:false,
+//         zoomControlOptions: {
+//             style:google.maps.ZoomControlStyle.LARGE
+//         }
+//
+//     }
+//     map = new google.maps.Map(document.getElementById('map'), mapOptions);
+//
+//     // SET THE MAP TYPE
+//     var mapType = new google.maps.StyledMapType(style, {name:"Grayscale"});
+//     map.mapTypes.set('grey', mapType);
+//     map.setMapTypeId('grey');
+//
+//     //CREATE A CUSTOM PIN ICON
+//     var marker_image ='plugins/google-map/images/marker.png';
+//     var pinIcon = new google.maps.MarkerImage(marker_image,null,null, null,new google.maps.Size(74, 73));
+//
+//     marker = new google.maps.Marker({
+//         position: nottingham,
+//         map: map,
+//         icon: pinIcon,
+//         title: 'eventre'
+//     });
+// }
 
-    var nottingham = new google.maps.LatLng(51.507351, -0.127758);
-
-    var style = [
-    {
-        "stylers": [
-            {
-                "hue": "#ff61a6"
-            },
-            {
-                "visibility": "on"
-            },
-            {
-                "invert_lightness": true
-            },
-            {
-                "saturation": 40
-            },
-            {
-                "lightness": 10
-            }
-        ]
-    }
-];
-
-    var mapOptions = {
-        // SET THE CENTER
-        center: nottingham,
-
-        // SET THE MAP STYLE & ZOOM LEVEL
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        zoom:9,
-
-        // SET THE BACKGROUND COLOUR
-        backgroundColor:"#000",
-
-        // REMOVE ALL THE CONTROLS EXCEPT ZOOM
-        zoom:17,
-        panControl:false,
-        zoomControl:true,
-        mapTypeControl:false,
-        scaleControl:false,
-        streetViewControl:false,
-        overviewMapControl:false,
-        zoomControlOptions: {
-            style:google.maps.ZoomControlStyle.LARGE
-        }
-
-    }
-    map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-    // SET THE MAP TYPE
-    var mapType = new google.maps.StyledMapType(style, {name:"Grayscale"});
-    map.mapTypes.set('grey', mapType);
-    map.setMapTypeId('grey');
-
-    //CREATE A CUSTOM PIN ICON
-    var marker_image ='plugins/google-map/images/marker.png';
-    var pinIcon = new google.maps.MarkerImage(marker_image,null,null, null,new google.maps.Size(74, 73));
-
-    marker = new google.maps.Marker({
-        position: nottingham,
-        map: map,
-        icon: pinIcon,
-        title: 'eventre'
-    });
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
+// google.maps.event.addDomListener(window, 'load', initialize);
 
 
 
