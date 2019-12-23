@@ -31,7 +31,7 @@ public class AgentServerThread extends Thread {
                     final Message msg = (Message) fromClient;
                     System.out.println(String.format("%d received: %s", agent.getPort(), fromClient.toString()));
                     if (INFO_NEW_BLOCK == msg.type) {
-                        if (msg.blocks.isEmpty() || msg.blocks.size() > 1) {
+                        if (msg.blocks.size() != 1) {
                             System.err.println("Invalid block received: " + msg.blocks);
                         }
                         synchronized (agent) {
@@ -46,11 +46,19 @@ public class AgentServerThread extends Thread {
                                 .build());
                         break;
                     } else if (INFO_NEW_TRANSACTION == msg.type) {
-                        if (msg.transactions.isEmpty() || msg.transactions.size() > 1) {
+                        if (msg.transactions.size() != 1) {
                             System.err.println("Invalid block received: " + msg.transactions);
                         }
                         synchronized (agent) {
                             agent.addTransaction(msg.transactions.get(0));
+                        }
+                        break;
+                    } else if (INVALID_TRANSACTION == msg.type) {
+                        if (msg.transactions.size() != 1) {
+                            System.err.println("Invalid block received: " + msg.transactions);
+                        }
+                        synchronized (agent) {
+                            agent.invalidTransaction(msg.transactions.get(0));
                         }
                         break;
                     }

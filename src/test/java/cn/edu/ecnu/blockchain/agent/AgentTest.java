@@ -13,7 +13,7 @@ class AgentTest {
         Agent receiver = manager.addAgent("receiver", 3001);
         Agent miner = manager.addAgent("miner", 3002);
         manager.createBlock(sender.getName());
-        manager.createTransaction(miner.getName(), sender.getName(), receiver.getName(), 5.8);
+//        manager.createTransaction(miner.getName(), sender.getName(), receiver.getName(), 5.8);
         Assertions.assertEquals(4.2, AccountUtil.getAvailableAccount(sender.getBlockchain(), sender.getPublicKey()));
     }
 }

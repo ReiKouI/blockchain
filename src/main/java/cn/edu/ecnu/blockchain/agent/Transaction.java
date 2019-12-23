@@ -2,6 +2,7 @@ package cn.edu.ecnu.blockchain.agent;
 
 import cn.edu.ecnu.blockchain.util.RSAUtil;
 import lombok.Data;
+import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.Serializable;
@@ -17,6 +18,7 @@ public class Transaction implements Serializable {
     private String receiverName;
     private double value;
     private String signature;
+    private boolean valid;
 
     public Transaction(String sender, String senderName, String receiver, String receiverName, double value) {
         if (value < 0) {
@@ -28,6 +30,7 @@ public class Transaction implements Serializable {
         this.receiver = receiver;
         this.receiverName = receiverName;
         this.value = value;
+        this.valid = true;
     }
 
     private String getSignData() {
@@ -41,4 +44,6 @@ public class Transaction implements Serializable {
     public boolean isSignVerified() {
         return RSAUtil.verifyData(getSignData(), signature, RSAUtil.parsePublicKey(sender));
     }
+
+
 }

@@ -13,7 +13,7 @@ public class Message implements Serializable {
     List<Transaction> transactions;
 
     public enum MESSAGE_TYPE {
-        READY, INFO_NEW_BLOCK, REQ_ALL_BLOCKS, RSP_ALL_BLOCKS, INFO_NEW_TRANSACTION
+        READY, INFO_NEW_BLOCK, REQ_ALL_BLOCKS, RSP_ALL_BLOCKS, INFO_NEW_TRANSACTION, INVALID_TRANSACTION
     }
 
     @Override

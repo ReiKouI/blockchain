@@ -4,6 +4,7 @@ import cn.edu.ecnu.blockchain.agent.Agent;
 import cn.edu.ecnu.blockchain.agent.AgentManager;
 import cn.edu.ecnu.blockchain.agent.Block;
 import cn.edu.ecnu.blockchain.agent.Transaction;
+import cn.edu.ecnu.blockchain.util.AccountUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,7 +44,7 @@ public class MainController {
         agentManager.deleteAllAgents();
     }
 
-    @RequestMapping(method = POST, path = "mine")
+    @RequestMapping(method = POST, path = "blank")
     public Block createBlock(@RequestParam(value = "agent") final String name) {
         return agentManager.createBlock(name);
     }
@@ -59,26 +60,29 @@ public class MainController {
                              @RequestParam(value = "sender") final String sender,
                              @RequestParam(value = "receiver") final String receiver,
                              @RequestParam(value = "value") final Double value
-
-
     ) {
         return agentManager.createTransaction(sender, receiver, value);
     }
 
-//    @RequestMapping(method = POST, path = "mine")
-//    public Block mine(@RequestParam(value = "miner") final String miner, ) {
-//        return agentManager.createBlock(name);
-//    }
-
+    @RequestMapping(method = POST, path = "mine")
+    public Block mine(@RequestParam(value = "miner") final String miner,@RequestParam(value = "signature") final String signature) {
+        return agentManager.createBlock(miner, signature);
+    }
 
 
     @RequestMapping(method = POST, path = "blockchain")
     public List<Block> getBlockChain(@RequestParam(value = "name") final String name
-
-
     ) {
         return agentManager.getAgentByName(name).getBlockchain();
     }
+
+    @RequestMapping(method = POST, path = "balance")
+    public double getBalance(@RequestParam(value = "name") final String name
+    ) {
+        final Agent agent = agentManager.getAgentByName(name);
+        return AccountUtil.getAvailableAccount(agent.getBlockchain(), agent.getName());
+    }
+
 
 
 }

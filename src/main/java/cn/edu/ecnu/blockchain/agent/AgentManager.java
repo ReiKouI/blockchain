@@ -74,13 +74,16 @@ public class AgentManager {
         return null;
     }
 
-    public Block createTransaction(String minerName, String senderName, String receiverName, double value) {
+    public Block createBlock(String minerName, String signature) {
         final Agent miner = getAgentByName(minerName);
-        final Agent sender = getAgentByName(senderName);
-        final Agent receiver = getAgentByName(receiverName);
-        if (miner != null && sender != null && receiver != null) {
-            Transaction transaction = sender.createTransactionTo(receiver, value);
-            return miner.createBlock(transaction);
+        if (miner != null) {
+            final Transaction transaction = getAgentByName(minerName).getTransactionBySig(signature);
+            if (transaction != null) {
+                final Block block = miner.createBlock(transaction);
+                miner.invalidTransaction(transaction);
+                miner.broadcastTransaction(Message.MESSAGE_TYPE.INVALID_TRANSACTION, transaction);
+                return block;
+            }
         }
         return null;
     }

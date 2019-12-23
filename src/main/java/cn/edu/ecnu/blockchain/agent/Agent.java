@@ -79,13 +79,15 @@ public class Agent {
         }
         Transaction transaction = new Transaction(publicKey, name, receiver.publicKey, receiver.name, value);
         transaction.sign(privateKey);
-        broadcastTransaction(transaction);
+        broadcastTransaction(INFO_NEW_TRANSACTION, transaction);
         return transaction;
     }
 
-    private void broadcastTransaction(Transaction transaction) {
-        peers.forEach(peer -> sendMessage(INFO_NEW_TRANSACTION, peer.getAddress(), peer.getPort(), transaction));
+    public void broadcastTransaction(Message.MESSAGE_TYPE type, Transaction transaction) {
+        peers.forEach(peer -> sendMessage(type, peer.getAddress(), peer.getPort(), transaction));
     }
+
+
 
     Block createBlock(Transaction transaction) {
         if (blockchain.isEmpty()) {
@@ -120,6 +122,21 @@ public class Agent {
 
     void addTransaction(Transaction transaction) {
         transactions.add(transaction);
+    }
+
+    void invalidTransaction(Transaction transaction) {
+        for (Transaction t : transactions) {
+            if (t.getSignature().equals(transaction.getSignature()))
+                t.setValid(false);
+        }
+    }
+
+    Transaction getTransactionBySig(String signature) {
+        for (Transaction transaction: transactions) {
+            if (transaction.isValid() && transaction.getSignature().equals(signature))
+                return transaction;
+        }
+        return null;
     }
 
     void startHost() {
