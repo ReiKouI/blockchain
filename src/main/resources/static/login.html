@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
+    <!--<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />-->
 
     <!-- CSS
     ================================================== -->
@@ -74,12 +74,12 @@ Fixed Navigation
                 <div class="block">
                     <h2 class="text-center">BitBank</h2>
 
-                    <form class="text-left clearfix mt-50" action="index.html" >
+                    <form class="text-left clearfix mt-50" name="signupform">
                         <div class="form-group">
-                            <input type="text" class="form-control"  placeholder="Name">
+                            <input type="text" class="form-control"  placeholder="Name" id="username">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" class="form-control" placeholder="Password" id="password">
                         </div>
                         <button type="submit" class="btn btn-main" id="signup">注册</button>
                         <!--<p class="mt-20">还没有账号？<a href="signup.html">去创建</a></p>-->
@@ -108,29 +108,13 @@ Essential Scripts
 <!--<script src="plugins/bootstrap/dist/js/popper.min.js"></script>-->
 <script src="https://cdn.bootcss.com/popper.js/1.15.0/esm/popper.min.js" type="module"></script>
 <script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Owl Carousel -->
 <script src="plugins/slick-carousel/slick/slick.min.js"></script>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script>
-    var trace1 = {
-        x: [1, 2, 3, 4],
-        y: [10, 15, 13, 17],
-        type: 'scatter'
-    };
-    var trace2 = {
-        x: [1, 2, 3, 4],
-        y: [16, 5, 11, 9],
-        type: 'scatter'
-    };
-    var data = [trace1, trace2];
-    Plotly.newPlot('myDiv', data);
-</script>
-<!-- Smooth Scroll js -->
 <script src="plugins/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
-
 <!-- Custom js -->
 <script src="js/script.js"></script>
+<script src="js/displayLogin.js"></script>
+<script src="js/index.js"></script>
 <script>
     $(function(){
         /*公共部分

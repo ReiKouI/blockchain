@@ -35,7 +35,7 @@
 
 </head>
 
-<body id="body">
+<body id="body" onload="initialPersonalInfo()">
 
  <!--
   Start Preloader
@@ -73,14 +73,14 @@ Fixed Navigation
 		<div class="row">
 			<div class="col-md-4">
 				<h2>用户信息</h2>
-				<p id="name">名称</p>
-				<p id="email">邮箱</p>
+				<p id="personal-name">名称</p>
+				<!--<p id="personal_email">邮箱</p>-->
 			</div>
 			<div class="col-md-8">
 				<h4>地址</h4>
-				<p id="address">localhost:8080</p>
+				<p id="personal-address">localhost:8080</p>
                 <h4>账户余额</h4>
-                <p id="money">$0.00</p>
+                <p id="balance">$0.00</p>
                 <button class="btn btn-main" id="mine-btn">充值</button>
 				<h4>区块链网络图</h4>
 				<p>区块链网络图</p>
@@ -112,26 +112,15 @@ Fixed Navigation
     <!-- Owl Carousel -->
     <script src="plugins/slick-carousel/slick/slick.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script>
-        var trace1 = {
-  x: [1, 2, 3, 4],
-  y: [10, 15, 13, 17],
-  type: 'scatter'
-};
-var trace2 = {
-  x: [1, 2, 3, 4],
-  y: [16, 5, 11, 9],
-  type: 'scatter'
-};
-var data = [trace1, trace2];
-Plotly.newPlot('myDiv', data);
-    </script>
+
     <!-- Smooth Scroll js -->
     <script src="plugins/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
 
     <!-- Custom js -->
     <script src="js/script.js"></script>
+    <script src="js/displayPersonalInfo.js"></script>
+    <script src="js/index.js"></script>
     <script>
      $(function(){
          /*公共部分
@@ -141,21 +130,21 @@ Plotly.newPlot('myDiv', data);
          $(".header").load("header.html");
          $(".footer").load("footer.html");
 
-         $.ajax({
-            url: "http://localhost:8080/agent/balance",
-             type: "POST",
-             data: {
-             "name": name
-         },
-         success: function (res) {  //res是server端响应
-             //response = JSON.parse(res); //将json字符串解析为json对象（即JS对象）
-             if (res.code==="0") {
-                 document.getElementById("money").value = res.data;
-             } else {
-                 alert("");
-             }
-         }
-         });
+//         $.ajax({
+//            url: "http://localhost:8080/agent/balance",
+//             type: "POST",
+//             data: {
+//             "name": name
+//         },
+//         success: function (res) {  //res是server端响应
+//             //response = JSON.parse(res); //将json字符串解析为json对象（即JS对象）
+//             if (res.code==="0") {
+//                 document.getElementById("money").value = res.data;
+//             } else {
+//                 alert("");
+//             }
+//         }
+//         });
 
          $("#mine-btn").on("click", function () {
              var name = $("#name").val();
