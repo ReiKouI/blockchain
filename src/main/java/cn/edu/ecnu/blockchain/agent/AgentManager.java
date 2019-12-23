@@ -84,4 +84,14 @@ public class AgentManager {
         }
         return null;
     }
+
+    public Transaction createTransaction(String senderName, String receiverName, double value) {
+        final Agent sender = getAgentByName(senderName);
+        final Agent receiver = getAgentByName(receiverName);
+        if (sender != null && receiver != null) {
+            Transaction transaction = sender.createTransactionTo(receiver, value);
+            return transaction;
+        }
+        return null;
+    }
 }

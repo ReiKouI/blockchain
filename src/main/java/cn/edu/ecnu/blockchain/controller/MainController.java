@@ -3,6 +3,7 @@ package cn.edu.ecnu.blockchain.controller;
 import cn.edu.ecnu.blockchain.agent.Agent;
 import cn.edu.ecnu.blockchain.agent.AgentManager;
 import cn.edu.ecnu.blockchain.agent.Block;
+import cn.edu.ecnu.blockchain.agent.Transaction;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,16 +48,29 @@ public class MainController {
         return agentManager.createBlock(name);
     }
 
+    @RequestMapping(method = POST, path = "transactions")
+    public List<Transaction> getTransactions(@RequestParam(value = "name") final String name
+    ) {
+        return agentManager.getAgentByName(name).getTransactions();
+    }
+
     @RequestMapping(method = POST, path = "transaction")
-    public Block createBlock(@RequestParam(value = "agent") final String miner,
+    public Transaction doTransaction(
                              @RequestParam(value = "sender") final String sender,
                              @RequestParam(value = "receiver") final String receiver,
                              @RequestParam(value = "value") final Double value
 
 
     ) {
-        return agentManager.createTransaction(miner, sender, receiver, value);
+        return agentManager.createTransaction(sender, receiver, value);
     }
+
+//    @RequestMapping(method = POST, path = "mine")
+//    public Block mine(@RequestParam(value = "miner") final String miner, ) {
+//        return agentManager.createBlock(name);
+//    }
+
+
 
     @RequestMapping(method = POST, path = "blockchain")
     public List<Block> getBlockChain(@RequestParam(value = "name") final String name

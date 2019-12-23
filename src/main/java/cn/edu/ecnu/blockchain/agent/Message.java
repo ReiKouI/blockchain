@@ -10,9 +10,10 @@ public class Message implements Serializable {
     int receiver;
     MESSAGE_TYPE type;
     List<Block> blocks;
+    List<Transaction> transactions;
 
     public enum MESSAGE_TYPE {
-        READY, INFO_NEW_BLOCK, REQ_ALL_BLOCKS, RSP_ALL_BLOCKS
+        READY, INFO_NEW_BLOCK, REQ_ALL_BLOCKS, RSP_ALL_BLOCKS, INFO_NEW_TRANSACTION
     }
 
     @Override
@@ -40,6 +41,11 @@ public class Message implements Serializable {
 
         MessageBuilder withBlocks(final List<Block> blocks) {
             message.blocks = blocks;
+            return this;
+        }
+
+        MessageBuilder withTransactions(final List<Transaction> transactions) {
+            message.transactions = transactions;
             return this;
         }
 
