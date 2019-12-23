@@ -1,5 +1,7 @@
 package cn.edu.ecnu.blockchain.agent;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -8,6 +10,7 @@ import java.net.Socket;
 import static cn.edu.ecnu.blockchain.agent.Message.MESSAGE_TYPE.*;
 
 
+@Log4j2
 public class PeerHandler extends Thread {
     private Socket client;
     private final Agent agent;
@@ -29,7 +32,7 @@ public class PeerHandler extends Thread {
             while ((fromClient = in.readObject()) != null) {
                 if (fromClient instanceof Message) {
                     final Message msg = (Message) fromClient;
-                    System.out.println(String.format("%d received: %s", agent.getPort(), fromClient.toString()));
+                    log.info(String.format("%d received: %s", agent.getPort(), fromClient.toString()));
                     if (INFO_NEW_BLOCK == msg.type) {
                         if (msg.blocks.size() != 1) {
                             System.err.println("Invalid block received: " + msg.blocks);

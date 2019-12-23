@@ -114,7 +114,7 @@ public class Agent {
         final int index = previousBlock.getIndex() + 1;
         final Block block = new Block(index, previousBlock.getHash(), name, publicKey, transaction);
         block.sign(privateKey);
-        System.out.println(String.format("%s created new block %s", name, block.toString()));
+        log.info(String.format("%s created new block %s", name, block.toString()));
         broadcast(INFO_NEW_BLOCK, block);
         return block;
     }
@@ -156,7 +156,7 @@ public class Agent {
                 }
                 serverSocket.close();
             } catch (IOException e) {
-                System.err.println("Could not listen to port " + port);
+                log.error("Could not listen to port " + port);
             }
         }).start();
         broadcast(REQ_ALL_BLOCKS, null);
