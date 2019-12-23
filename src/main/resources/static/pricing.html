@@ -37,10 +37,10 @@
 
 <body id="body">
 
- <!--
-  Start Preloader
-  ==================================== -->
-  <div id="preloader">
+    <!--
+    Start Preloader
+    ==================================== -->
+    <div id="preloader">
     <div class="preloader">
       <div class="sk-circle1 sk-child"></div>
       <div class="sk-circle2 sk-child"></div>
@@ -55,137 +55,185 @@
       <div class="sk-circle11 sk-child"></div>
       <div class="sk-circle12 sk-child"></div>
     </div>
-  </div>
-  <!--
-  End Preloader
-  ==================================== -->
+    </div>
+    <!--
+    End Preloader
+    ==================================== -->
 
+    <!--
+    Fixed Navigation
+    ==================================== -->
+    <div class="header"></div>
 
+    <!-- Start Pricing section
+            =========================================== -->
+    <section class="pricing-table  section" id="pricing">
+        <div class="container">
 
-
-<!--
-Fixed Navigation
-==================================== -->
-<div class="header"></div>
-
-<!-- Start Pricing section
-		=========================================== -->
-	<section class="pricing-table  section" id="pricing">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="title text-center">
-						<h4>Easy Pricing</h4>
-						<h2>Pricing.</h2>
-						<span class="border"></span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque, obcaecati atque sit!</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
+            <div class="row">
                 <div class="col-md-12 text-center">
                     <ul class="nav nav-pills mb-6 pricing-tab justify-content-center" id="pills-tab" role="tablist">
-                      <li class="nav-item">
-                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Buy</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Sell</a>
-                      </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">买入</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">卖出</a>
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <div class="row">
-                            <div class="col-md-4 col-sm-6 col-xs-12" >
-                                <div class="pricing-item">
-                                    <h3>Get 0.112 ETH</h3>
-                                    <div class="pricing-body">
-                                        <div class="price">
-                                            <span>€803</span>
-                                            <span class="sup">95</span>
-                                        </div>
-                                        <div class="progress" style="height: 3px;">
-                                            <div class="progress-bar"style="width: 75%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <p>You get 0.0364727 Bitcoins</p>
-                                        <a class="btn btn-main" href="#">Buy</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12" >
-                                <div class="pricing-item">
-                                    <h3>Get 0.112 ETH</h3>
-                                    <div class="pricing-body">
-                                        <div class="price">
-                                            <span>€283</span>
-                                            <span class="sup">15</span>
-                                        </div>
-                                        <div class="progress" style="height: 3px;">
-                                            <div class="progress-bar"style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <p>You get 0.0364727 Bitcoins</p>
-                                        <a class="btn btn-main" href="#">Buy</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12" >
-                                <div class="pricing-item">
-                                    <h3>Get 0.112 ETH</h3>
-                                    <div class="pricing-body">
-                                        <div class="price">
-                                            <span>€122</span>
-                                            <span class="sup">00</span>
-                                        </div>
-                                        <div class="progress" style="height: 3px;">
-                                            <div class="progress-bar"style="width: 45%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <p>You get 0.0364727 Bitcoins</p>
-                                        <a class="btn btn-main" href="#">Buy</a>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="buy" style="display: block">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table header-border">
+                            <thead>
+                            <tr>
+                                <th>交易号</th>
+                                <th>用户ID</th>
+                                <th>日期</th>
+                                <th>金额</th>
+                                <th>交易状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="javascript:void(0)">Order #26589</a>
+                                </td>
+                                <td>Herman Beck</td>
+                                <td><span class="text-muted">Oct 16, 2017</span>
+                                </td>
+                                <td>$45.00</td>
+                                <td><span class="label gradient-1 rounded">Paid</span>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><a href="javascript:void(0)">Order #58746</a>
+                                </td>
+                                <td>Mary Adams</td>
+                                <td><span class="text-muted">Oct 12, 2017</span>
+                                </td>
+                                <td>$245.30</td>
+                                <td><span class="label gradient-2 rounded">Shipped</span>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><a href="javascript:void(0)">Order #98458</a>
+                                </td>
+                                <td>Caleb Richards</td>
+                                <td><span class="text-muted">May 18, 2017</span>
+                                </td>
+                                <td>$38.00</td>
+                                <td><span class="label gradient-4 rounded">Shipped</span>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><a href="javascript:void(0)">Order #32658</a>
+                                </td>
+                                <td>June Lane</td>
+                                <td><span class="text-muted">Apr 28, 2017</span>
+                                </td>
+                                <td>$77.99</td>
+                                <td><span class="label gradient-2 rounded">Paid</span>
+                                </td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <form class="custom-pricing-form">
+                    <h3 class="text-center"><br><br>您也可以直接通过输入金额和卖方ID进行购买:</h3>
+                    <div class="form-row align-items-center">
+                        <div class="offset-md-1 col-md-4 ">
+                            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="BTC">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="USD">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-main mb-2">购买</button>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">Tik</div>
-                </div>
-
-                </div>
+                </form>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="custom-pricing text-center mt-30">
-                        <p>The price will be recalculated in 27 seconds</p>
-                        <p><a href="">How is the price calculated ?</a></p>
+            <div class="sell" style="display: none">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table header-border">
+                            <thead>
+                            <tr>
+                                <th>交易号</th>
+                                <th>日期</th>
+                                <th>金额</th>
+                                <th>交易状态</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="javascript:void(0)">Order #26589</a>
+                                </td>
+                                <td><span class="text-muted">Oct 16, 2017</span>
+                                </td>
+                                <td>$45.00</td>
+                                <td><span class="label gradient-1 rounded">Paid</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="javascript:void(0)">Order #58746</a>
+                                </td>
+                                <td><span class="text-muted">Oct 12, 2017</span>
+                                </td>
+                                <td>$245.30</td>
+                                <td><span class="label gradient-2 rounded">Shipped</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="javascript:void(0)">Order #98458</a>
+                                </td>
+                                <td><span class="text-muted">May 18, 2017</span>
+                                </td>
+                                <td>$38.00</td>
+                                <td><span class="label gradient-4 rounded">Shipped</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="javascript:void(0)">Order #32658</a>
+                                </td>
+                                <td><span class="text-muted">Apr 28, 2017</span>
+                                </td>
+                                <td>$77.99</td>
+                                <td><span class="label gradient-2 rounded">Paid</span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+                <form class="custom-pricing-form">
+                    <h3 class="text-center"><br><br>输入金额和用户密钥进行售出:</h3>
+                    <div class="form-row align-items-center">
+                        <div class="offset-md-1 col-md-4 ">
+                            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="BTC">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="USD">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-main mb-2">售出</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <form class="custom-pricing-form">
-                <h3 class="text-center">You can also input a custom amount:</h3>
-                <div class="form-row align-items-center">
-                    <div class="offset-md-2 col-md-4 ">
-                        <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="BTC">
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="USD">
-                    </div>
-                    <div class="col-md-2">
-                        <button type="submit" class="btn btn-main mb-2">Buy</button>
-                    </div>
-                </div>
-            </form>
-
         </div>   	<!-- End container -->
-	</section>   <!-- End section -->
+    </section>   <!-- End section -->
 
-
-<footer id="footer" class="bg-one">
-    <div class="footer"></div>
-</footer> <!-- end footer -->
-
-
+    <footer id="footer" class="bg-one">
+      <div class="footer"></div>
+    </footer> <!-- end footer -->
     <!-- end Footer Area
     ========================================== -->
 
@@ -203,27 +251,12 @@ Fixed Navigation
     <script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Owl Carousel -->
     <script src="plugins/slick-carousel/slick/slick.min.js"></script>
-    <!--<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>-->
-    <!--<script>-->
-        <!--var trace1 = {-->
-  <!--x: [1, 2, 3, 4],-->
-  <!--y: [10, 15, 13, 17],-->
-  <!--type: 'scatter'-->
-<!--};-->
-<!--var trace2 = {-->
-  <!--x: [1, 2, 3, 4],-->
-  <!--y: [16, 5, 11, 9],-->
-  <!--type: 'scatter'-->
-<!--};-->
-<!--var data = [trace1, trace2];-->
-<!--Plotly.newPlot('myDiv', data);-->
-    <!--</script>-->
     <!-- Smooth Scroll js -->
     <script src="plugins/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>-->
-
     <!-- Custom js -->
     <script src="js/script.js"></script>
+
     <script>
      $(function(){
          /*公共部分
@@ -232,8 +265,20 @@ Fixed Navigation
           */
          $(".header").load("header.html");
          $(".footer").load("footer.html");
+         $('#pills-home-tab').on("click", function () {
+             $(this).addClass('active');
+             $('#pills-profile-tab').removeClass('active');
+             $('.buy').css('display', "block");
+             $('.sell').css('display', "none");
+         });
+         $('#pills-profile-tab').on("click", function () {
+             $(this).addClass('active');
+             $('#pills-home-tab').removeClass('active');
+             $('.sell').css('display', "block");
+             $('.buy').css('display', "none");
+         });
      });
     </script>
 
   </body>
-  </html>
+</html>

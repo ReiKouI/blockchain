@@ -37,10 +37,10 @@
 
 <body id="body" onload="getBlockChain()">
 
-    <!--
-    Start Preloader
-    ==================================== -->
-    <div id="preloader">
+ <!--
+  Start Preloader
+  ==================================== -->
+  <div id="preloader">
     <div class="preloader">
       <div class="sk-circle1 sk-child"></div>
       <div class="sk-circle2 sk-child"></div>
@@ -55,22 +55,34 @@
       <div class="sk-circle11 sk-child"></div>
       <div class="sk-circle12 sk-child"></div>
     </div>
-    </div>
-    <!--
-    End Preloader
-    ==================================== -->
+  </div>
+  <!--
+  End Preloader
+  ==================================== -->
 
-    <!--
-    Fixed Navigation
-    ==================================== -->
-    <div class="header"></div>
 
-    <!-- Start Pricing section
-            =========================================== -->
-    <section class="pricing-table  section" id="pricing">
-        <div class="container">
+
+
+<!--
+Fixed Navigation
+==================================== -->
+<div class="header"></div>
+
+<!-- Start Pricing section
+		=========================================== -->
+	<section class="pricing-table  section" id="pricing">
+		<div class="container">
             <div class="row">
-                <h4 class="card-title">交易行</h4>
+                <div class="col">
+                    <div class="title text-center">
+                        <h4>快捷交易</h4>
+                        <h2>交易行</h2>
+                        <span class="border"></span>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="table-responsive">
                     <table class="table header-border">
                         <thead>
@@ -80,6 +92,7 @@
                             <th>日期</th>
                             <th>金额</th>
                             <th>交易状态</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -92,6 +105,7 @@
                             <td>$45.00</td>
                             <td><span class="label gradient-1 rounded">Paid</span>
                             </td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td><a href="javascript:void(0)">Order #58746</a>
@@ -102,6 +116,7 @@
                             <td>$245.30</td>
                             <td><span class="label gradient-2 rounded">Shipped</span>
                             </td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td><a href="javascript:void(0)">Order #98458</a>
@@ -112,6 +127,7 @@
                             <td>$38.00</td>
                             <td><span class="label gradient-4 rounded">Shipped</span>
                             </td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td><a href="javascript:void(0)">Order #32658</a>
@@ -122,17 +138,21 @@
                             <td>$77.99</td>
                             <td><span class="label gradient-2 rounded">Paid</span>
                             </td>
+                            <td></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>   	<!-- End container -->
-    </section>   <!-- End section -->
+	</section>   <!-- End section -->
 
-    <footer id="footer" class="bg-one">
-      <div class="footer"></div>
-    </footer> <!-- end footer -->
+
+<footer id="footer" class="bg-one">
+    <div class="footer"></div>
+</footer> <!-- end footer -->
+
+
     <!-- end Footer Area
     ========================================== -->
 
@@ -150,12 +170,27 @@
     <script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Owl Carousel -->
     <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+    <!--<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>-->
+    <!--<script>-->
+        <!--var trace1 = {-->
+  <!--x: [1, 2, 3, 4],-->
+  <!--y: [10, 15, 13, 17],-->
+  <!--type: 'scatter'-->
+<!--};-->
+<!--var trace2 = {-->
+  <!--x: [1, 2, 3, 4],-->
+  <!--y: [16, 5, 11, 9],-->
+  <!--type: 'scatter'-->
+<!--};-->
+<!--var data = [trace1, trace2];-->
+<!--Plotly.newPlot('myDiv', data);-->
+    <!--</script>-->
     <!-- Smooth Scroll js -->
     <script src="plugins/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>-->
+
     <!-- Custom js -->
     <script src="js/script.js"></script>
-
     <script>
      $(function(){
          /*公共部分
@@ -170,4 +205,4 @@
     <script src="js/restClientTransaction.js"></script>
 
   </body>
-</html>
+  </html>

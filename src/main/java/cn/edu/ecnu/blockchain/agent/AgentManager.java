@@ -25,7 +25,7 @@ public class AgentManager {
 
     public Agent addAgent(String name, int port) {
         Agent a = new Agent(name, "localhost", port, root, agents);
-        a.startHost();
+        a.joinCluster();
         agents.add(a);
         return a;
     }
@@ -46,7 +46,7 @@ public class AgentManager {
     public void deleteAgent(String name) {
         final Agent a = getAgentByName(name);
         if (a != null) {
-            a.stopHost();
+            a.stop();
             agents.remove(a);
         }
     }
@@ -61,7 +61,7 @@ public class AgentManager {
 
     public void deleteAllAgents() {
         for (Agent a : agents) {
-            a.stopHost();
+            a.stop();
         }
         agents.clear();
     }
