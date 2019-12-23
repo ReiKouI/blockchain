@@ -68,11 +68,11 @@ public class Agent {
         return createBlock(null);
     }
 
-    Transaction createTransactionTo(String receiver, double value) {
+    Transaction createTransactionTo(Agent receiver, double value) {
         if (value > AccountUtil.getAvailableAccount(blockchain, publicKey)) {
             throw new RuntimeException("No enough account.");
         }
-        Transaction transaction = new Transaction(publicKey, receiver, value);
+        Transaction transaction = new Transaction(publicKey, name, receiver.publicKey, receiver.name, value);
         transaction.sign(privateKey);
         return transaction;
     }

@@ -14,7 +14,8 @@ class BlockTest {
         KeyPair sender = RSAUtil.createKeyPair();
         KeyPair receiver = RSAUtil.createKeyPair();
         Transaction transaction = new Transaction(
-                RSAUtil.encodeKey(sender.getPublic()), RSAUtil.encodeKey(receiver.getPublic()), 8);
+                RSAUtil.encodeKey(sender.getPublic()), "sender",
+                RSAUtil.encodeKey(receiver.getPublic()), "receiver", 8);
         transaction.sign(RSAUtil.encodeKey(sender.getPrivate()));
         Block block = new Block(0, "INIT_HASH", "Unit Test",
                 RSAUtil.encodeKey(sender.getPublic()), transaction);
