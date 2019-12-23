@@ -8,11 +8,11 @@ import java.net.Socket;
 import static cn.edu.ecnu.blockchain.agent.Message.MESSAGE_TYPE.*;
 
 
-public class AgentServerThread extends Thread {
+public class PeerHandler extends Thread {
     private Socket client;
     private final Agent agent;
 
-    AgentServerThread(final Agent agent, final Socket client) {
+    PeerHandler(final Agent agent, final Socket client) {
         super(agent.getName() + System.currentTimeMillis());
         this.agent = agent;
         this.client = client;
