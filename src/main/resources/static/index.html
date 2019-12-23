@@ -7,10 +7,10 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="description" content="Bingo One page parallax responsive HTML Template ">
-
   <meta name="author" content="Themefisher.com">
-
   <title>Bit-Bank</title>
+  <!-- 引入 ECharts 文件 -->
+  <script src="js/echarts.min.js"></script>
 
 <!-- Mobile Specific Meta
   ================================================== -->
@@ -30,9 +30,6 @@
   <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-
-
-
 </head>
 
 <body id="body">
@@ -139,33 +136,27 @@ Fixed Navigation
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="index.html">主页 <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pricing.html">Buy/Sell</a>
+                                <a class="nav-link" href="pricing.html">买进/卖出</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="faq.html">F.A.Q</a>
+                                <a class="nav-link" href="faq.html">相关介绍</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="login.html">Sign In</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="signup.html">Sign Up</a>
+                                <a class="nav-link" href="login.html">登录/注册</a>
                             </li>
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Pages
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="team.html">Team Page</a>
+                            <!--<li class="nav-item dropdown">-->
+                                <!--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                                    <!--Pages-->
+                                <!--</a>-->
+                                <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+                                    <!--<a class="dropdown-item" href="team.html">Team Page</a>-->
                                     <!--<a class="dropdown-item" href="404.html">404 Page</a>-->
-                                </div>
-                            </li>
+                                <!--</div>-->
+                            <!--</li>-->
                         </ul>
                     </div>
                 </nav>
@@ -192,11 +183,11 @@ Welcome Slider
 			</div>
 			<div class="col-md-6">
 				<div class="block">
-					<h2>Bitcoin is a remarkable cryptographic achievement</h2>
-					<p>The ability to create something which is not duplicable in the digital world has enormous value…Lot’s of people will build businesses on top of that.</p>
+					<h2>比特币是一种P2P形式的虚拟的加密数字货币</h2>
+					<p>比特币（Bitcoin）的概念最初由中本聪在2008年11月1日提出，并于2009年1月3日正式诞生。比特币不依靠特定货币机构发行，它依据特定算法，通过大量的计算产生，比特币经济使用整个P2P网络中众多节点构成的分布式数据库来确认并记录所有的交易行为，并使用密码学的设计来确保货币流通各个环节安全性。</p>
 					<ul class="list-inline">
 						<li class="list-inline-item">
-							<a data-scroll href="#services" class="btn btn-main">Explore Us</a>
+							<a data-scroll href="#services" class="btn btn-main">了解更多</a>
 						</li>
 					</ul>
 				</div>
@@ -211,25 +202,25 @@ Welcome Slider
             <div class="col-md-3">
                 <div class="counters-item">
                     <span>$50B+</span>
-                    <p>Bitcoin Served</p>
+                    <p>总金额</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="counters-item">
                     <span>10M+</span>
-                    <p>Server Build</p>
+                    <p>总交易量</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="counters-item">
                     <span>68</span>
-                    <p>Countries Supported</p>
+                    <p>总节点数</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="counters-item kill-border">
                     <span>10B</span>
-                    <p>Active Treades</p>
+                    <p>单笔最大交易额</p>
                 </div>
             </div>
         </div>
@@ -244,18 +235,19 @@ Start About Section
 		<div class="row">
 			<div class="col-12 col-md-6 align-self-center">
                 <div class="align-self-center">
-    				<h2>A New Kind of Digital Currency to change the world what we think</h2>
-    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae deleniti ipsa labore necessitatibus culpa veritatis quo accusantium, neque enim ea ad eaque iure, quas tempore velit, quibusdam dolor illo! Explicabo.</p>
-    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quisquam maiores iste soluta, nihil dolorem?</p>
-                    <a href="#" class="btn btn-main">Learn More</a>
+    				<h2>当前比特币网络交易网络</h2>
+    				<p></p>
+    				<p></p>
+                    <a href="#" class="btn btn-main">点击查看详情</a>
                 </div>
             </div>
             <div class="col-12 col-md-6">
-                <div id="myDiv" style="width:100%;height:400px;">
+                <div id="main" style="width:100%;height:400px;">
                     <p>Bitcoin graphs</p>
-			</div>
-		</div> 		<!-- End row -->
-	</div>   	<!-- End container -->
+			    </div>
+		    </div> 		<!-- End row -->
+	    </div>   	<!-- End container -->
+    </div>
 </section>   <!-- End section -->
 
 <section class="services section-xs"  id="services">
@@ -267,8 +259,8 @@ Start About Section
 					<div class="service-icon text-center">
 						<img src="images/icons/bitcoin-safety-shield.png" alt="">
 					</div>
-					<h3>Easy & Secure</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+					<h3>去中心化</h3>
+					<p>比特币是第一种分布式的虚拟货币，整个网络由用户构成，没有中央银行。去中心化是比特币安全与自由的保证 </p>
 				</div>
 			</div>
 			<!-- End Single Service Item -->
@@ -279,8 +271,8 @@ Start About Section
 					<div class="service-icon text-center">
 						<img src="images/icons/bitcoin-exchange.png" alt="">
 					</div>
-					<h3>Instant Exchange</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+					<h3>全世界流通</h3>
+					<p>比特币可以在任意一台接入互联网的电脑上管理。不管身处何方，任何人都可以挖掘、购买、出售或收取比特币。</p>
 				</div>
 			</div>
 			<!-- End Single Service Item -->
@@ -291,8 +283,8 @@ Start About Section
 					<div class="service-icon text-center">
 						<img src="images/icons/bitcoin-network.png" alt="">
 					</div>
-					<h3>Strong Network</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+					<h3>专属所有权</h3>
+					<p>操控比特币需要私钥，除了用户自己之外无人可以获取。</p>
 				</div>
 			</div>
             <!-- Single Service Item -->
@@ -301,8 +293,8 @@ Start About Section
                     <div class="service-icon text-center">
                         <img src="images/icons/bitcoin-safety-shield.png" alt="">
                     </div>
-                    <h3>Easy & Secure</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+                    <h3>低交易费用</h3>
+                    <p>可以免费汇出比特币。</p>
                 </div>
             </div>
             <!-- End Single Service Item -->
@@ -312,8 +304,8 @@ Start About Section
                     <div class="service-icon text-center">
                         <img src="images/icons/bitcoin-safety-shield.png" alt="">
                     </div>
-                    <h3>Easy & Secure</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+                    <h3>无隐藏成本</h3>
+                    <p>知道对方比特币地址就可以进行支付。</p>
                 </div>
             </div>
             <!-- End Single Service Item -->
@@ -323,8 +315,8 @@ Start About Section
                     <div class="service-icon text-center">
                         <img src="images/icons/bitcoin-safety-shield.png" alt="">
                     </div>
-                    <h3>Easy & Secure</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+                    <h3>跨平台挖掘</h3>
+                    <p>用户可以在众多平台上发掘不同硬件的计算能力。</p>
                 </div>
             </div>
             <!-- End Single Service Item -->
@@ -345,10 +337,10 @@ Start About Section
     <div class="row">
       <div class="col">
         <div class="title text-center">
-          <h4>Bitcoin flow</h4>
-          <h2>How It Works</h2>
+          <h4>比特币交易流</h4>
+          <h2>如何加入交易网络</h2>
           <span class="border"></span>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque, obcaecati atque sit!</p>
+          <p></p>
         </div>
       </div>
     </div>
@@ -356,22 +348,22 @@ Start About Section
       <div class="col-md-4 p-0">
         <div class="service-item text-center">
             <span class="count">1.</span>
-            <h4>Sign Up</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+            <h4>注册/登录</h4>
+            <p>注册来加入比特币网络</p>
         </div>
       </div>
       <div class="col-md-4 p-0">
         <div class="service-item text-center">
           <span class="count">2.</span>
-          <h4>Connect</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+          <h4>挖矿</h4>
+          <p>通过挖矿获得比特币</p>
         </div>
       </div>
       <div class="col-md-4 p-0">
         <div class="service-item text-center">
           <span class="count">3.</span>
-          <h4>Buy Digital Currency</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+          <h4>交易</h4>
+          <p>通过输入交易方id进行买进或卖出完成交易</p>
         </div>
       </div>
     </div>    <!-- End row -->
@@ -494,7 +486,7 @@ Start Call To Action
                         <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="BTC">
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="USD">
+                        <input type="text" class="form-control mb-2" id="inlineFormInput_USD" placeholder="USD">
                     </div>
                     <div class="col-md-2">
                         <button type="submit" class="btn btn-main mb-2">Buy</button>
@@ -794,31 +786,20 @@ Start Call To Action
     <!-- Main jQuery -->
     <script src="plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.7 -->
-    <script src="plugins/bootstrap/dist/js/popper.min.js"></script>
+    <!--<script src="plugins/bootstrap/dist/js/popper.min.js"></script>-->
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/esm/popper.min.js" type="module"></script>
     <script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Owl Carousel -->
     <script src="plugins/slick-carousel/slick/slick.min.js"></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script>
-        var trace1 = {
-  x: [1, 2, 3, 4],
-  y: [10, 15, 13, 17],
-  type: 'scatter'
-};
-var trace2 = {
-  x: [1, 2, 3, 4],
-  y: [16, 5, 11, 9],
-  type: 'scatter'
-};
-var data = [trace1, trace2];
-Plotly.newPlot('myDiv', data);
-    </script>
+    <!--<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>-->
+
     <!-- Smooth Scroll js -->
     <script src="plugins/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
 
     <!-- Custom js -->
     <script src="js/script.js"></script>
-
+    <!--力具图-->
+    <script src="js/myChart.js"></script>
   </body>
   </html>
