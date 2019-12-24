@@ -2,17 +2,13 @@ package cn.edu.ecnu.blockchain.controller;
 
 import cn.edu.ecnu.blockchain.agent.Agent;
 import cn.edu.ecnu.blockchain.agent.AgentManager;
-import cn.edu.ecnu.blockchain.agent.Block;
 import cn.edu.ecnu.blockchain.agent.Transaction;
 import cn.edu.ecnu.blockchain.result.Result;
-import cn.edu.ecnu.blockchain.util.AccountUtil;
 import cn.edu.ecnu.blockchain.util.ResultUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import sun.applet.Main;
 
-import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
