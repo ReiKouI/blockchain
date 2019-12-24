@@ -9,11 +9,12 @@ class AgentTest {
     @Test
     void createTransactionTo() throws InterruptedException {
         AgentManager manager = new AgentManager();
-        Agent sender = manager.addAgent("sender", 3000);
-        Agent receiver = manager.addAgent("receiver", 3001);
-        Agent miner = manager.addAgent("miner", 3002);
+        Agent sender = manager.addAgent("sender", 3100);
+        Agent receiver = manager.addAgent("receiver", 3101);
+        Agent miner = manager.addAgent("miner", 3102);
         manager.createBlock(sender.getName());
-//        manager.createTransaction(miner.getName(), sender.getName(), receiver.getName(), 5.8);
+        final Transaction transaction = manager.createTransaction(sender.getName(), receiver.getName(), 5.8);
+        miner.createBlock(transaction);
         Assertions.assertEquals(4.2, AccountUtil.getAvailableAccount(sender.getBlockchain(), sender.getPublicKey()));
     }
 }
