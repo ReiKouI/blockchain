@@ -18,20 +18,33 @@ function displayTrans(jsonTrans) {
             if(!itemTrans.valid){
                 isPaid = "                            <td><span class=\"label gradient-2 rounded\">已记帐</span>\n"
             }
+            var isMine = "                            <td><span class=\"mine label gradient-1 rounded\" value=\""+itemTrans.signature+"\">mine</span>\n"
+            if(!itemTrans.valid){
+                isMine = "                            <td>\n"
+            }
             var tr= "<tr>\n" +
             "                            <td class='signature'>"+itemTrans.signature+"</td>\n" +
             "                            <td>"+itemTrans.senderName+"</td>\n" +
             "                            <td><span class=\"text-muted\">"+itemTrans.timeStamp+"</span>\n" +
             "                            </td>\n" +
             "                            <td>"+itemTrans.value+"</td>\n" +
-                isPaid+
+                isPaid +
             "                            </td>\n" +
-            "                            <td></td>\n" +
-            "                        </tr>"
+                isMine +
+            "                            </td>\n" +
+                "                        </tr>"
             $("#transBody").append(tr);
         }
 
     }
 
 }
+
+$(".mine").live("click",function () {
+    console.log("mine");
+    console.log($(this).attr("value"));
+    // $(this).attr("class","label gradient-2 rounded");
+    mine(window.sessionStorage.getItem("name"),$(this).attr("value"))
+    $(this).remove();
+})
 

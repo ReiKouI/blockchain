@@ -1,9 +1,9 @@
 function addAgent(name,port) {
     var formData = new FormData();
-    // formData.append("name", "A10");
-    formData.append("name", name);
-    // formData.append("port", "3031");
-    formData.append("port", port);
+    formData.append("name", "A3");
+    // formData.append("name", name);
+    formData.append("port", "3031");
+    // formData.append("port", port);
     sendHttpRequest("POST", "agent", formData, saveUserInfo);
 
 }
@@ -13,10 +13,20 @@ function showBalance(name){
     sendHttpRequest("POST","agent/balance",formData, null);
 }
 
-function saveUserInfo(data){
-    console.log("save user info to session.");
-    window.sessionStorage.setItem("username",data.name);
-    window.sessionStorage.setItem("port",data.port);
+function saveUserInfo(jsonUserInfo){
+    if (typeof jsonUserInfo === "string") {
+        var userInfo;
+        try {
+            userInfo = JSON.parse(jsonUserInfo);
+        } catch (e) {
+            document.getElementById("msg").innerHTML = "Invalid response from server " + jsonUserInfo;
+            return;
+        }
+    } else {
+        userInfo = jsonUserInfo;
+    }
+    window.sessionStorage.setItem("username",userInfo.data.name);
+    window.sessionStorage.setItem("port",userInfo.data.port);
     alert("注册成功！")
     window.location.href = 'index.html';
 }
