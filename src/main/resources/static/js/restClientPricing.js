@@ -1,11 +1,8 @@
 "use strict";
 
 var testMode = false;
-function getBlockChain() {
-    var formData = new FormData();
-    // formData.append("name", "A3");
-    formData.append("name", window.sessionStorage.getItem("username"));
-    sendHttpRequest("POST", "agent/transactions", formData, displayTrans);
+function getAgentInfo() {
+    sendHttpRequest("GET", "agent/all", null, displayPrcingBuy);
 }
 
 

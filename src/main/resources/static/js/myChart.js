@@ -100,6 +100,7 @@ var myChart = echarts.init(document.getElementById('main'));
 var datas = [];
 var nodes = [];
 var edges = []
+var dic = new Array()
 function displayAllAgents(json) {
     var agents;
     try {
@@ -113,112 +114,68 @@ function displayAllAgents(json) {
 
     for (var i in agentsData) {
         nodes.push({
-            id:agentsData[i].name,
+            id:parseInt(i),
             name:agentsData[i].name,
-            symbolSize:i+20
+            symbolSize: parseInt(i)+20
         })
-        for (var trans in agentsData.transactions){
-            edges.push(trans.senderName, trans.receiverName);
+        dic[agentsData[i].name] = parseInt(i)
+    }
+    for (var i in agentsData) {
+        for (var j in agentsData[i].transactions){
+            if(dic[agentsData[i].transactions[j].senderName] && dic[agentsData[i].transactions[j].receiverName]){
+                edges.push([parseInt(dic[agentsData[i].transactions[j].senderName]), parseInt(dic[agentsData[i].transactions[j].receiverName])]);
+            }
         }
     }
+
     datas.push({
         nodes: nodes,
         edges: edges
     });
-
-}
-
-function createNodes(count) {
-    var nodes = [];
-    for (var i = 0; i < count; i++) {
-        nodes.push({
-            id: i,
-            name:'节点'+i,
-            symbolSize: i+20
-        });
-    }
-    return nodes;
-}
-
-function createEdges(count) {
-    var edges = [];
-    if (count === 2) {
-        return [[0, 1]];
-    }
-    for (var i = 0; i < count; i++) {
-        edges.push([i, (i + 1) % count]);
-    }
-    return edges;
-}
-
-
-// for (var i = 0; i < 16; i++) {
-//     datas.push({
-//         nodes: createNodes(i + 2),
-//         edges: createEdges(i + 2)
-//     });
-// }
-
-
-// datas.push({
-//     nodes: createNodes(12),
-//     edges: createEdges(12)
-// });
-
-
-
-var option = {
-
-    series: datas.map(function (item, idx) {
-        return {
-            type: 'graph',
-            layout: 'force',
-            symbolSize: 20,
-            animation: false,
-            data: item.nodes,
-            left: (idx % 4) * 25 + '%',
-            top: Math.floor(idx / 4) * 25 + '%',
-            width: '100%',
-            height: '100%',
-            edgeSymbol: ['circle', 'arrow'],
-            edgeSymbolSize: [4, 10],
-            edgeLabel: {
-                normal: {
-                    textStyle: {
-                        fontSize: 20
-                    }
-                }
-            },
-            force: {
-                // initLayout: 'circular'
-                // gravity: 0
-                repulsion: 240
-            },
-            edges: [{
-                source: 0,
-                target: 1,
-                symbolSize: [5, 20],
-                lineStyle: {
+    console.log(nodes)
+    console.log(edges)
+    var option = {
+        series: datas.map(function (item, idx) {
+            return {
+                type: 'graph',
+                layout: 'force',
+                symbolSize: 20,
+                animation: false,
+                data: item.nodes,
+                left: (idx % 4) * 25 + '%',
+                top: Math.floor(idx / 4) * 25 + '%',
+                width: '100%',
+                height: '100%',
+                edgeSymbol: ['circle', 'arrow'],
+                edgeSymbolSize: [4, 10],
+                edgeLabel: {
                     normal: {
-                        width: 5,
-                        curveness: 0.2
+                        textStyle: {
+                            fontSize: 20
+                        }
                     }
-                }
-            },{
-                source: 2,
-                target: 1
-            },
-            ]
-            // edges: item.edges.map(function (e) {
-            //     return {
-            //         // source: e[0],
-            //         // target: e[1]
-            //     };
-            // })
-        };
-    })
-};
+                },
+                force: {
+                    initLayout: 'circular',
+                    gravity: 0,
+                    repulsion: 60
+                },
+                edges: item.edges.map(function (e) {
+                    return {
+                        source: e[0],
+                        target: e[1]
+                    };
+                })
+            };
+        })
+    };
+
+
+    myChart.setOption(option);
+}
 
 
 
-myChart.setOption(option);
+
+
+
