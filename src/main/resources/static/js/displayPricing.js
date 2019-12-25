@@ -85,7 +85,11 @@ $("#buyButton").on("click", function () {
     var sender = $(this).parent().parent().find("#buySellName").val();
     var num = $(this).parent().parent().find("#BuyNum").val();
     if(sender!==""&&num!=="") {
-        trans(sender,window.sessionStorage.getItem("username"),num);
+        if(window.sessionStorage.getItem("username")) {
+            trans(sender, window.sessionStorage.getItem("username"), num);
+        }else {
+            alert("请先登陆")
+        }
     }
     else {
         alert("用户名或密码不能为空");
@@ -93,10 +97,14 @@ $("#buyButton").on("click", function () {
 });
 
 $("#sellBitButton").on("click", function () {
-    var reciver = $(this).parent().parent().find("#buySellName").val();
-    var num = $(this).parent().parent().find("#BuyNum").val();
-    if(sender!==""&&num!=="") {
-        trans(window.sessionStorage.getItem("username"),reciver,num);
+    var reciver = $(this).parent().parent().find("#sellReciverName").val();
+    var num = $(this).parent().parent().find("#sellNum").val();
+    if(reciver!==""&&num!=="") {
+        if(window.sessionStorage.getItem("username")){
+            trans(window.sessionStorage.getItem("username"),reciver,num);
+        }else {
+            alert("请先登陆")
+        }
     }
     else {
         alert("用户名或密码不能为空");
