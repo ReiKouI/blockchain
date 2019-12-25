@@ -74,17 +74,17 @@ Fixed Navigation
 			<div class="col-md-4">
 				<h2>用户信息</h2>
 				<p id="personal-name">名称</p>
+                <button class="btn btn-main" id="mine-btn">充值</button>
 				<!--<p id="personal_email">邮箱</p>-->
 			</div>
 			<div class="col-md-8">
 				<h4>地址</h4>
 				<p id="personal-address">localhost:8080</p>
                 <h4>账户余额</h4>
-                <p id="balance">$0.00</p>
-                <button class="btn btn-main" id="mine-btn">充值</button>
-				<h4>区块链网络图</h4>
-				<p>区块链网络图</p>
-				<h4>个人交易信息</h4>
+                <p id="personal-balance">$0.00</p>
+				<!--<h4>区块链网络图</h4>-->
+				<!--<p>区块链网络图</p>-->
+				<!--<h4>个人交易信息</h4>-->
 				<p></p>
 				</div>
 		</div>
@@ -120,7 +120,7 @@ Fixed Navigation
     <!-- Custom js -->
     <script src="js/script.js"></script>
     <script src="js/displayPersonalInfo.js"></script>
-    <script src="js/restClientLogin.js.js"></script>
+    <script src="js/restClientLogin.js"></script>
     <script>
      $(function(){
          /*公共部分
@@ -129,42 +129,6 @@ Fixed Navigation
           */
          $(".header").load("header.html");
          $(".footer").load("footer.html");
-
-//         $.ajax({
-//            url: "http://localhost:8080/agent/balance",
-//             type: "POST",
-//             data: {
-//             "name": name
-//         },
-//         success: function (res) {  //res是server端响应
-//             //response = JSON.parse(res); //将json字符串解析为json对象（即JS对象）
-//             if (res.code==="0") {
-//                 document.getElementById("money").value = res.data;
-//             } else {
-//                 alert("");
-//             }
-//         }
-//         });
-
-         $("#mine-btn").on("click", function () {
-             var name = $("#name").val();
-             $.ajax({
-                 url: "http://localhost:8080/agent/blank",
-                 type: "POST",
-                 data: {
-                     "name": name
-                 },
-                 success: function (res) {  //res是server端响应
-                     //response = JSON.parse(res); //将json字符串解析为json对象（即JS对象）
-                     if (res.code==="0") {
-                         alert("充值成功！");
-                         window.location.reload();
-                     } else {
-                         alert("");
-                     }
-                 }
-             });
-         });
      });
     </script>
 
