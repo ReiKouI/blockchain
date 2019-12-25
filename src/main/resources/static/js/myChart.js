@@ -116,7 +116,7 @@ function displayAllAgents(json) {
         nodes.push({
             id:parseInt(i),
             name:agentsData[i].name,
-            symbolSize: Math.ceil(parseInt(agentsData[i].availableAccount))
+            symbolSize: Math.ceil(parseInt(agentsData[i].availableAccount))+1
         })
         dic[agentsData[i].name] = parseInt(i)
     }
@@ -158,7 +158,7 @@ function displayAllAgents(json) {
                 force: {
                     initLayout: 'circular',
                     gravity: 0,
-                    repulsion: 60
+                    repulsion: 20
                 },
                 edges: item.edges.map(function (e) {
                     return {

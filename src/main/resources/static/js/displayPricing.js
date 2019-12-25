@@ -29,7 +29,7 @@ function displayPrcingBuy(jsonAgent) {
                 "                                </td>\n" +
                 "                                <td>"+itemTrans.availableAccount+"</td>\n" +
                 // "                                <td><span id='123' class=\"buyByAgent label gradient-2 rounded\" valueName=\'"+itemTrans.name+"\' valueAvailableAccount=\'"+itemTrans.availableAccount+"\' onclick='buyByAgent("+itemTrans.name+","+itemTrans.availableAccount+")'>买入</span>\n" +
-                "                                <td><span class=\"label gradient-2 rounded\" onclick='buyByAgent(\""+itemTrans.name+"\",\""+itemTrans.availableAccount+"\")'>买入</span>\n" +
+                "                                <td><span class=\"label gradient-2 rounded\" onclick='showSimpleBsDialog(\""+itemTrans.name+"\",\""+itemTrans.availableAccount+"\")'>买入</span>\n" +
                 "                                </td>\n" +
                 "                            </tr>"
             $("#pricingBuy").append(tr);
@@ -153,4 +153,68 @@ function buyByAgent(name,valueAvailableAccount) {
     else {
         alert("用户名或密码不能为空");
     }
+}
+function showSimpleBsDialog(name,price) {
+    SimpleBsDialog.show({
+        width: '900px',
+        autoWidth: false,
+        height: '30%',
+        autoHeight: true,
+        title: '买入',
+        closable: true,
+        spinner: true,
+        spinnerIcon: '<span class="spinner-border text-primary" role="status"></span>',
+        closeByBackdrop: true,
+        closeByKeyboard: true,
+        html: '',
+        cssClass: 'login-dialog',
+        buttons: [{
+            id: 'btn-ok',
+            label: '确定',
+            cssClass: 'btn-primary',
+            action: function(dialogRef) {
+                console.log('OK button pressed!');
+                dialogRef.close();
+            },
+        }, {
+            id: 'btn-cancel',
+            label: '取消',
+            cssClass: 'label gradient-2 rounded',
+            action: function(dialogRef) {
+                console.log('Cancel button pressed!');
+                dialogRef.close();
+            },
+        },
+        ],
+        onShow: function(dialogRef) {
+            dialogRef.getButtons().prop('disabled', true);
+        },
+        onShown: function(dialogRef) {
+            console.log('onShown');
+
+            setTimeout(function() {
+                dialogRef.set({
+                    'spinner': false,
+                }).getModalBody().html("<div class=\"form-row align-items-center\">\n" +
+                    "                        <div class=\"offset-md-1 col-md-4 \">\n" +
+                    "                            <input disabled type=\"text\" class=\"form-control mb-2\" placeholder=\""+name+"\">\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"col-md-4\">\n" +
+                    "                            <input type=\"text\" class=\"form-control mb-2\" placeholder=\"金额\">\n" +
+                    "                        </div>\n" +
+                    // "                        <div class=\"col-md-2\">\n" +
+                    // "                            <button type=\"submit\" class=\"btn-main mb-2\"></button>\n" +
+                    // "                        </div>\n" +
+                    "                    </div>");
+
+                dialogRef.getButtons().prop('disabled', false);
+            }, 1000);
+        },
+        onHide: function(dialogRef) {
+            console.log('onHide');
+        },
+        onHidden: function(dialogRef) {
+            console.log('onHidden');
+        },
+    });
 }
