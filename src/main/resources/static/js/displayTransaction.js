@@ -26,7 +26,7 @@ function displayTrans(jsonTrans) {
             var tr= "<tr>\n" +
             "                            <td class='signature'>"+itemTrans.signature+"</td>\n" +
             "                            <td>"+itemTrans.senderName+"</td>\n" +
-            "                            <td><span class=\"text-muted\">"+itemTrans.timeStamp+"</span>\n" +
+            "                            <td><span class=\"text-muted\">"+getdate(itemTrans.timeStamp)+"</span>\n" +
             "                            </td>\n" +
             "                            <td>"+itemTrans.value+"</td>\n" +
                 isPaid +
@@ -40,6 +40,13 @@ function displayTrans(jsonTrans) {
     }
 
 }
+
+function getdate(timestamp) {
+    var date1 = new Date(timestamp);
+
+    var date2=date1.toLocaleDateString().replace(/\//g, "-") + " " + date1.toTimeString().substr(0, 8);
+    return date2
+ }
 
 $(".mine").live("click",function () {
     console.log("mine");

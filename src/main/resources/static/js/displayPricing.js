@@ -71,7 +71,7 @@ function displayPrcingMySell(jsonAgent) {
             var tr= "<tr>\n" +
                 "                                <td>"+itemTrans.senderName+"</td>\n" +
                 "                                <td>"+itemTrans.receiverName+"</td>\n" +
-                "                                <td><span class=\"text-muted\">"+itemTrans.timeStamp+"</span></td>\n" +
+                "                                <td><span class=\"text-muted\">"+getdate(itemTrans.timeStamp)+"</span></td>\n" +
                 "                                <td>"+itemTrans.value+"</td>\n" +
                 isValildWord +
                 "                                <td class='signature'>"+itemTrans.signature+"</td>\n" +
@@ -80,6 +80,13 @@ function displayPrcingMySell(jsonAgent) {
         }
 
     }
+}
+
+function getdate(timestamp) {
+    var date1 = new Date(timestamp);
+
+    var date2=date1.toLocaleDateString().replace(/\//g, "-") + " " + date1.toTimeString().substr(0, 8);
+    return date2
 }
 
 $("#sellButton").live("click",function () {

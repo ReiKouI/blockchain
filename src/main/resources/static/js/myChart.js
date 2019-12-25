@@ -122,9 +122,9 @@ function displayAllAgents(json) {
     }
     for (var i in agentsData) {
         for (var j in agentsData[i].transactions){
-            if(dic[agentsData[i].transactions[j].senderName] && dic[agentsData[i].transactions[j].receiverName]){
+            // if(dic[agentsData[i].transactions[j].senderName] && dic[agentsData[i].transactions[j].receiverName]){
                 edges.push([parseInt(dic[agentsData[i].transactions[j].senderName]), parseInt(dic[agentsData[i].transactions[j].receiverName])]);
-            }
+            // }
         }
     }
 
@@ -158,7 +158,7 @@ function displayAllAgents(json) {
                 force: {
                     initLayout: 'circular',
                     gravity: 0,
-                    repulsion: 20
+                    repulsion: 200
                 },
                 edges: item.edges.map(function (e) {
                     return {
