@@ -7,11 +7,6 @@ function addAgent(name,port) {
     sendHttpRequest("POST", "agent", formData, saveUserInfo);
 
 }
-function showBalance(name){
-    var formData = new FormData();
-    formData.append("name",name);
-    sendHttpRequest("POST","agent/balance",formData, null);
-}
 
 function saveUserInfo(jsonUserInfo){
     if (typeof jsonUserInfo === "string") {
@@ -29,6 +24,18 @@ function saveUserInfo(jsonUserInfo){
     window.sessionStorage.setItem("port",userInfo.data.port);
     alert("注册成功！")
     window.location.href = 'index.html';
+}
+
+function getBalance(name){
+    var formData = new FormData();
+    formData.append("name",name);
+    sendHttpRequest("POST","agent/balance",formData, showBalance);
+}
+
+function deposit(name){
+    var formData = new FormData();
+    formData.append("name", name);
+    sendHttpRequest("POST", "agent/blank", formData, null);
 }
 
 function sendHttpRequest(action, url, data, callback) {
