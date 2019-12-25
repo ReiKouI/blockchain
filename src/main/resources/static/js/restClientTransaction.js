@@ -24,12 +24,9 @@ function sendHttpRequest(action, url, data, callback) {
 }
 function mine(miner,signature) {
     var formData = new FormData();
-    console.log(miner)
-    console.log(signature)
     formData.append("miner", miner);
     formData.append("signature", signature);
     sendHttpRequestMine("POST", "agent/mine", formData, getBlockChain);
-    // getBlockChain()
 }
 
 function sendHttpRequestMine(action, url, data, callback) {

@@ -116,7 +116,7 @@ function displayAllAgents(json) {
         nodes.push({
             id:parseInt(i),
             name:agentsData[i].name,
-            symbolSize: parseInt(i)+20
+            symbolSize: Math.ceil(parseInt(agentsData[i].availableAccount))
         })
         dic[agentsData[i].name] = parseInt(i)
     }

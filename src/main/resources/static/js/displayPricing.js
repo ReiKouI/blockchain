@@ -28,7 +28,8 @@ function displayPrcingBuy(jsonAgent) {
                 "                                <td><span class=\"text-muted\">"+itemTrans.port+"</span>\n" +
                 "                                </td>\n" +
                 "                                <td>"+itemTrans.availableAccount+"</td>\n" +
-                "                                <td><span >买入</span>\n" +
+                // "                                <td><span id='123' class=\"buyByAgent label gradient-2 rounded\" valueName=\'"+itemTrans.name+"\' valueAvailableAccount=\'"+itemTrans.availableAccount+"\' onclick='buyByAgent("+itemTrans.name+","+itemTrans.availableAccount+")'>买入</span>\n" +
+                "                                <td><span class=\"label gradient-2 rounded\" onclick='buyByAgent(\""+itemTrans.name+"\",\""+itemTrans.availableAccount+"\")'>买入</span>\n" +
                 "                                </td>\n" +
                 "                            </tr>"
             $("#pricingBuy").append(tr);
@@ -63,13 +64,17 @@ function displayPrcingMySell(jsonAgent) {
             // if(!itemTrans.valid){
             //     isPaid = "                            <td><span class=\"label gradient-2 rounded\">已记帐</span>\n"
             // }
+            var isValildWord = "                                <td><span class=\"label gradient-2 rounded\">"+itemTrans.valid+"</span></td>\n";
+            if(!itemTrans.valid){
+                isValildWord = "                                <td><span class=\"label gradient-4 rounded\">"+itemTrans.valid+"</span></td>\n"
+            }
             var tr= "<tr>\n" +
                 "                                <td>"+itemTrans.senderName+"</td>\n" +
                 "                                <td>"+itemTrans.receiverName+"</td>\n" +
                 "                                <td><span class=\"text-muted\">"+itemTrans.timeStamp+"</span></td>\n" +
                 "                                <td>"+itemTrans.value+"</td>\n" +
-                "                                <td><span class=\"label gradient-1 rounded\">"+itemTrans.valid+"</span></td>\n" +
-                "                                <td>"+itemTrans.signature+"</td>\n" +
+                isValildWord +
+                "                                <td class='signature'>"+itemTrans.signature+"</td>\n" +
                 "                            </tr>"
             $("#pricingSell").append(tr);
         }
@@ -110,3 +115,42 @@ $("#sellBitButton").on("click", function () {
         alert("用户名或密码不能为空");
     }
 });
+
+$(".buyByAgent").on("click",function(){
+    console.log("buyByagent")
+    var name = $(this).attr("valueName")
+    var valueAvailableAccount = $(this).attr("valueAvailableAccount")
+    console.log(name)
+    console.log(valueAvailableAccount)
+    if(name!==""&&valueAvailableAccount!=="") {
+        if(window.sessionStorage.getItem("username")){
+            trans(name,window.sessionStorage.getItem("username"),valueAvailableAccount);
+        }else {
+            alert("请先登陆")
+        }
+    }
+    else {
+        alert("用户名或密码不能为空");
+    }
+})
+$('#123').on("click",function(){
+    console.log("123")
+})
+
+function buyByAgent(name,valueAvailableAccount) {
+    // console.log("funcbuyByagent")
+    // var name = $(this).attr("valueName")
+    // var valueAvailableAccount = $(this).attr("valueAvailableAccount")
+    console.log(name)
+    console.log(valueAvailableAccount)
+    if(name!==""&&valueAvailableAccount!=="") {
+        if(window.sessionStorage.getItem("username")){
+            trans(name,window.sessionStorage.getItem("username"),valueAvailableAccount);
+        }else {
+            alert("请先登陆")
+        }
+    }
+    else {
+        alert("用户名或密码不能为空");
+    }
+}

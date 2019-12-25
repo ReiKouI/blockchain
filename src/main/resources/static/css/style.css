@@ -1911,7 +1911,7 @@ a:focus, a:hover {
 
 /*# sourceMappingURL=maps/style.css.map */
 .signature{
-  width: 40px;
+  width: 40%;
   text-overflow:ellipsis;
   overflow:hidden;
 }
@@ -1925,4 +1925,8 @@ a:focus, a:hover {
   padding: 30px;
   border-radius: 4px;
   box-shadow: 0px 1px 46px -4px rgba(0, 0, 0, 0.28);
+}
+
+.fixTable{
+  table-layout: fixed;
 }
