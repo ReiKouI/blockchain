@@ -33,7 +33,7 @@ public class PeerHandler extends Thread {
                 if (fromClient instanceof Message) {
                     final Message msg = (Message) fromClient;
                     log.info(String.format("%d received: %s", agent.getPort(), fromClient.toString()));
-                    if (INFO_NEW_BLOCK == msg.type) {
+                    if (CREATE_BLOCK == msg.type) {
                         if (msg.blocks.size() != 1) {
                             System.err.println("Invalid block received: " + msg.blocks);
                         }
@@ -41,14 +41,15 @@ public class PeerHandler extends Thread {
                             agent.addBlockFromOtherAgent(msg.blocks.get(0));
                         }
                         break;
-                    } else if (REQ_ALL_BLOCKS == msg.type) {
+                    } else if (REQ_ALL == msg.type) {
                         out.writeObject(new Message.MessageBuilder()
                                 .withSender(agent.getPort())
-                                .withType(RSP_ALL_BLOCKS)
+                                .withType(RSP)
                                 .withBlocks(agent.getBlockchain())
+                                .withTransactions(agent.getTransactions())
                                 .build());
                         break;
-                    } else if (INFO_NEW_TRANSACTION == msg.type) {
+                    } else if (CREATE_TRANSACTION == msg.type) {
                         if (msg.transactions.size() != 1) {
                             System.err.println("Invalid block received: " + msg.transactions);
                         }

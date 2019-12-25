@@ -84,7 +84,7 @@ public class Agent {
         }
         Transaction transaction = new Transaction(publicKey, name, receiver.publicKey, receiver.name, value);
         transaction.sign(privateKey);
-        broadcastTransaction(INFO_NEW_TRANSACTION, transaction);
+        broadcastTransaction(CREATE_TRANSACTION, transaction);
         return transaction;
     }
 
@@ -115,7 +115,7 @@ public class Agent {
         final Block block = new Block(index, previousBlock.getHash(), name, publicKey, transaction);
         block.sign(privateKey);
         log.info(String.format("%s created new block %s", name, block.toString()));
-        broadcast(INFO_NEW_BLOCK, block);
+        broadcast(CREATE_BLOCK, block);
         return block;
     }
 
@@ -159,7 +159,7 @@ public class Agent {
                 log.error("Could not listen to port " + port);
             }
         }).start();
-        broadcast(REQ_ALL_BLOCKS, null);
+        broadcast(REQ_ALL, null);
     }
 
     void stop() {
@@ -239,9 +239,12 @@ public class Agent {
                                     .withSender(this.port)
                                     .withBlocks(Arrays.asList((Block) object)).build());
                         }
-                    } else if (RSP_ALL_BLOCKS == msg.type) {
+                    } else if (RSP == msg.type) {
                         if (!msg.blocks.isEmpty() && this.blockchain.size() == 1 && isChainValid(msg.blocks)) {
                             blockchain = new ArrayList<>(msg.blocks);
+                        }
+                        if (!msg.transactions.isEmpty() && this.transactions.size() == 0) {
+                            transactions = new ArrayList<>(msg.transactions);
                         }
                         break;
                     }
