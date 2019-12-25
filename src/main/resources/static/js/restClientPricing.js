@@ -5,12 +5,10 @@ function getAgentInfo() {
     sendHttpRequest("GET", "agent/all", null, displayPrcingBuy);
 }
 
-
-
 function sendHttpRequest(action, url, data, callback) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function () {
-        if (callback&&(xmlHttp.readyState === 4 && xmlHttp.status === 200)) {
+        if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
             callback(xmlHttp.responseText);
         }
     };
@@ -29,6 +27,18 @@ function trans(sender,receiver,value) {
     formData.append("sender",sender)
     formData.append("receiver",receiver)
     formData.append("value",value)
-    sendHttpRequest("POST", "agent/transaction", formData, null);
+    sendHttpRequestTrans("POST", "agent/transaction", formData, getAgentInfo);
     alert(sender+"转账给"+receiver+"交易成功！")
+}
+
+function sendHttpRequestTrans(action, url, data, callback) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+            alert(data)
+            callback();
+        }
+    };
+    xmlHttp.open(action, url, true);
+    xmlHttp.send(data);
 }

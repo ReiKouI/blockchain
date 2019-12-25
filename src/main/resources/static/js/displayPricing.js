@@ -14,6 +14,7 @@ function displayPrcingBuy(jsonAgent) {
     }
     console.log(agent)
     if (agent.code == 0 ){
+        $("#pricingBuy").empty();
         for(var i= 0;i<agent.data.length;i++){
             var itemTrans = agent.data[i]
             // var isPaid = "                            <td><span class=\"label gradient-4 rounded\">未记账</span>\n"
@@ -51,6 +52,7 @@ function displayPrcingMySell(jsonAgent) {
     console.log(agent)
     var myTrans = agent.data
     if (agent.code == 0 ){
+        $("#pricingSell").empty()
         for(var i= 0;i<myTrans.transactions.length;i++){
             var itemTrans = myTrans.transactions[i]
             console.log(i)

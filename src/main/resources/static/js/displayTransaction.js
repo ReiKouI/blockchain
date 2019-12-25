@@ -12,6 +12,7 @@ function displayTrans(jsonTrans) {
         trans = jsonTrans;
     }
     if (trans.code == 0 ){
+        $("#transBody").empty()
         for(var i= 0;i<trans.data.length;i++){
             var itemTrans = trans.data[i]
             var isPaid = "                            <td><span class=\"label gradient-4 rounded\">未记账</span>\n"
@@ -44,7 +45,7 @@ $(".mine").live("click",function () {
     console.log("mine");
     console.log($(this).attr("value"));
     // $(this).attr("class","label gradient-2 rounded");
-    mine(window.sessionStorage.getItem("name"),$(this).attr("value"))
+    mine(window.sessionStorage.getItem("username"),$(this).attr("value"))
     $(this).remove();
 })
 

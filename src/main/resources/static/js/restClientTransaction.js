@@ -28,6 +28,18 @@ function mine(miner,signature) {
     console.log(signature)
     formData.append("miner", miner);
     formData.append("signature", signature);
-    sendHttpRequest("POST", "agent/mine", formData, null);
+    sendHttpRequestMine("POST", "agent/mine", formData, getBlockChain);
     // getBlockChain()
+}
+
+function sendHttpRequestMine(action, url, data, callback) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+            console.log(xmlHttp.responseText)
+            callback();
+        }
+    };
+    xmlHttp.open(action, url, true);
+    xmlHttp.send(data);
 }

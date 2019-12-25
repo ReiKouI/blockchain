@@ -1,9 +1,9 @@
 function addAgent(name,port) {
     var formData = new FormData();
-    formData.append("name", "A3");
-    // formData.append("name", name);
-    formData.append("port", "3031");
-    // formData.append("port", port);
+    // formData.append("name", "A3");
+    formData.append("name", name);
+    // formData.append("port", "3031");
+    formData.append("port", port);
     sendHttpRequest("POST", "agent", formData, saveUserInfo);
 
 }
