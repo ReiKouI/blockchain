@@ -47,7 +47,6 @@ public class Agent {
     private String privateKey;
     private List<Agent> peers;
     private ServerSocket serverSocket;
-//    private ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(10);
 
     private boolean listening = true;
 
@@ -91,8 +90,6 @@ public class Agent {
     public void broadcastTransaction(Message.MESSAGE_TYPE type, Transaction transaction) {
         peers.forEach(peer -> sendMessage(type, peer.getAddress(), peer.getPort(), transaction));
     }
-
-
 
     Block createBlock(Transaction transaction) {
         if (blockchain.isEmpty()) {

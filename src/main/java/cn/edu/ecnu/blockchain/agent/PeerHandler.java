@@ -35,7 +35,7 @@ public class PeerHandler extends Thread {
                     log.info(String.format("%d received: %s", agent.getPort(), fromClient.toString()));
                     if (CREATE_BLOCK == msg.type) {
                         if (msg.blocks.size() != 1) {
-                            System.err.println("Invalid block received: " + msg.blocks);
+                            log.error("Invalid block received: " + msg.blocks);
                         }
                         synchronized (agent) {
                             agent.addBlockFromOtherAgent(msg.blocks.get(0));
@@ -51,7 +51,7 @@ public class PeerHandler extends Thread {
                         break;
                     } else if (CREATE_TRANSACTION == msg.type) {
                         if (msg.transactions.size() != 1) {
-                            System.err.println("Invalid block received: " + msg.transactions);
+                            log.error("Invalid block received: " + msg.transactions);
                         }
                         synchronized (agent) {
                             agent.addTransaction(msg.transactions.get(0));
@@ -59,7 +59,7 @@ public class PeerHandler extends Thread {
                         break;
                     } else if (INVALID_TRANSACTION == msg.type) {
                         if (msg.transactions.size() != 1) {
-                            System.err.println("Invalid block received: " + msg.transactions);
+                            log.error("Invalid block received: " + msg.transactions);
                         }
                         synchronized (agent) {
                             agent.invalidTransaction(msg.transactions.get(0));

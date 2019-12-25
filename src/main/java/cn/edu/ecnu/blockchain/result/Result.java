@@ -16,7 +16,6 @@ public class Result<T> {
         this(codeMessage.getCode(), codeMessage.getMsg(), data);
     }
 
-
     public int getCode() {
         return code;
     }

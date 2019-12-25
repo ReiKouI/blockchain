@@ -4,13 +4,11 @@ public class CodeMessage {
 
     public static CodeMessage SUCCESS = new CodeMessage(0, "success");
     public static CodeMessage SERVER_ERROR = new CodeMessage(-1, "服务端异常");
-
+    public static CodeMessage PORT_UESD = new CodeMessage(-2, "该端口已经被使用");
     public static CodeMessage INSUFFICIENT_BALANCE = new CodeMessage(101, "余额不足");
-
 
     private int code;
     private String msg;
-
 
     CodeMessage(int code, String msg) {
         this.code = code;

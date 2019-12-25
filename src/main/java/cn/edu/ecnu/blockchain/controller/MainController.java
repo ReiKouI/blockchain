@@ -18,7 +18,8 @@ public class MainController {
 
     private static AgentManager agentManager = new AgentManager();
 
-    private MainController() {
+    @RequestMapping(path = "test", method = GET)
+    public void test() {
         agentManager.addAgent("A1", 3001);
         agentManager.addAgent("A2", 3002);
         agentManager.addAgent("A3", 3003);
@@ -101,7 +102,5 @@ public class MainController {
         final Agent agent = agentManager.getAgentByName(name);
         return ResultUtil.success(agent.getAvailableAccount());
     }
-
-
-
+    
 }

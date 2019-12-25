@@ -9,10 +9,8 @@ public class ResultUtil {
         return new Result(CodeMessage.SUCCESS, data);
     }
 
-
     public static Result error(CodeMessage codeMessage) {
         return new Result(codeMessage, null);
     }
-
 
 }
